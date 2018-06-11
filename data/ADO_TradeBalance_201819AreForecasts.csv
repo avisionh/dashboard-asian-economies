@@ -1,0 +1,365 @@
+Regional Member,Year,Trade Balance ($ million),Subregion,Country Code
+Central Asia,2013,"49,418",Central Asia,
+Armenia,2013,"-2,196",Central Asia,ARM
+Azerbaijan,2013,"20,621",Central Asia,AZE
+Georgia,2013,"-3,493",Central Asia,GEO
+Kazakhstan,2013,"34,792",Central Asia,KAZ
+Kyrgyz Republic,2013,"-2,780",Central Asia,KGZ
+Tajikistan,2013,"-2,958",Central Asia,TJK
+Turkmenistan,2013,"4,032",Central Asia,TKM
+Uzbekistan,2013,"1,400",Central Asia,UZB
+East Asia,2013,"465,798",East Asia,
+"Hong Kong, China",2013,"-27,913",East Asia,HKG
+Mongolia,2013,"-2,619",East Asia,MNG
+People's Republic of China,2013,"358,981",East Asia,CHN
+Republic of Korea,2013,"82,781",East Asia,KOR
+"Taipei,China",2013,"54,567",East Asia,TWN
+South Asia,2013,"-193,044",South Asia,
+Afghanistan,2013,"-8,450",South Asia,AFG
+Bangladesh,2013,"-7,009",South Asia,BGD
+Bhutan,2013,-377,South Asia,BTN
+India,2013,"-147,609",South Asia,IND
+Maldives,2013,"-1,372",South Asia,MDV
+Nepal,2013,"-5,263",South Asia,NPL
+Pakistan,2013,"-15,355",South Asia,PAK
+Sri Lanka,2013,"-7,609",South Asia,LKA
+Southeast Asia,2013,"100,789",Southeast Asia,
+Brunei Darussalam,2013,"6,924",Southeast Asia,BRN
+Cambodia,2013,"-3,494",Southeast Asia,KHM
+Indonesia,2013,"5,833",Southeast Asia,IDN
+Lao People’s Dem. Rep.,2013,"-3,299",Southeast Asia,LAO
+Malaysia,2013,"30,642",Southeast Asia,MYS
+Myanmar,2013,"-3,053",Southeast Asia,MMR
+Philippines,2013,"-17,662",Southeast Asia,PHL
+Singapore,2013,"76,145",Southeast Asia,SGP
+Thailand,2013,40,Southeast Asia,THA
+Viet Nam,2013,"8,713",Southeast Asia,VNM
+The Pacific,2013,"-3,568",The Pacific,
+Cook Islands,2013,-104,The Pacific,COK
+Federated States of Micronesia,2013,-129,The Pacific,FSM
+Fiji,2013,"-1,159",The Pacific,FJI
+Kiribati,2013,-90,The Pacific,KIR
+Marshall Islands,2013,-61,The Pacific,MHL
+Nauru,2013,5,The Pacific,NRU
+Palau,2013,-133,The Pacific,PLW
+Papua New Guinea,2013,-517,The Pacific,PNG
+Samoa,2013,-281,The Pacific,WSM
+Solomon Islands,2013,-16,The Pacific,SLB
+Timor-Leste,2013,-679,The Pacific,TLS
+Tonga,2013,-172,The Pacific,TON
+Tuvalu,2013,-13,The Pacific,TUV
+Vanuatu,2013,-217,The Pacific,VUT
+Developing Asia,2013,"419,393",Developing Asia,
+Developing Asia excluding NIEs,2013,"233,812",Developing Asia excluding NIEs,
+Central Asia,2014,"45,022",Central Asia,
+Armenia,2014,"-2,055",Central Asia,ARM
+Azerbaijan,2014,"18,928",Central Asia,AZE
+Georgia,2014,"-4,280",Central Asia,GEO
+Kazakhstan,2014,"36,245",Central Asia,KAZ
+Kyrgyz Republic,2014,"-2,808",Central Asia,KGZ
+Tajikistan,2014,"-3,361",Central Asia,TJK
+Turkmenistan,2014,"4,143",Central Asia,TKM
+Uzbekistan,2014,"-1,790",Central Asia,UZB
+East Asia,2014,"551,904",East Asia,
+"Hong Kong, China",2014,"-32,359",East Asia,HKG
+Mongolia,2014,146,East Asia,MNG
+People's Republic of China,2014,"435,042",East Asia,CHN
+Republic of Korea,2014,"88,885",East Asia,KOR
+"Taipei,China",2014,"60,191",East Asia,TWN
+South Asia,2014,"-190,595",South Asia,
+Afghanistan,2014,"-5,854",South Asia,AFG
+Bangladesh,2014,"-6,794",South Asia,BGD
+Bhutan,2014,-393,South Asia,BTN
+India,2014,"-144,939",South Asia,IND
+Maldives,2014,"-1,660",South Asia,MDV
+Nepal,2014,"-6,079",South Asia,NPL
+Pakistan,2014,"-16,590",South Asia,PAK
+Sri Lanka,2014,"-8,287",South Asia,LKA
+Southeast Asia,2014,"137,221",Southeast Asia,
+Brunei Darussalam,2014,"7,443",Southeast Asia,BRN
+Cambodia,2014,"-3,483",Southeast Asia,KHM
+Indonesia,2014,"6,983",Southeast Asia,IDN
+Lao People’s Dem. Rep.,2014,"-3,518",Southeast Asia,LAO
+Malaysia,2014,"34,626",Southeast Asia,MYS
+Myanmar,2014,"-1,859",Southeast Asia,MMR
+Philippines,2014,"-17,330",Southeast Asia,PHL
+Singapore,2014,"85,032",Southeast Asia,SGP
+Thailand,2014,"17,201",Southeast Asia,THA
+Viet Nam,2014,"12,126",Southeast Asia,VNM
+The Pacific,2014,"1,378",The Pacific,
+Cook Islands,2014,-102,The Pacific,COK
+Federated States of Micronesia,2014,-117,The Pacific,FSM
+Fiji,2014,"-1,027",The Pacific,FJI
+Kiribati,2014,-90,The Pacific,KIR
+Marshall Islands,2014,-60,The Pacific,MHL
+Nauru,2014,-32,The Pacific,NRU
+Palau,2014,-160,The Pacific,PLW
+Papua New Guinea,2014,"4,248",The Pacific,PNG
+Samoa,2014,-309,The Pacific,WSM
+Solomon Islands,2014,-5,The Pacific,SLB
+Timor-Leste,2014,-602,The Pacific,TLS
+Tonga,2014,-170,The Pacific,TON
+Tuvalu,2014,-9,The Pacific,TUV
+Vanuatu,2014,-187,The Pacific,VUT
+Developing Asia,2014,"544,929",Developing Asia,
+Developing Asia excluding NIEs,2014,"343,180",Developing Asia excluding NIEs,
+Central Asia,2015,"7,901",Central Asia,
+Armenia,2015,"-1,186",Central Asia,ARM
+Azerbaijan,2015,"5,812",Central Asia,AZE
+Georgia,2015,"-4,356",Central Asia,GEO
+Kazakhstan,2015,"12,672",Central Asia,KAZ
+Kyrgyz Republic,2015,"-2,241",Central Asia,KGZ
+Tajikistan,2015,"-2,544",Central Asia,TJK
+Turkmenistan,2015,"1,485",Central Asia,TKM
+Uzbekistan,2015,"-1,740",Central Asia,UZB
+East Asia,2015,"749,251",East Asia,
+"Hong Kong, China",2015,"-22,871",East Asia,HKG
+Mongolia,2015,566,East Asia,MNG
+People's Republic of China,2015,"576,191",East Asia,CHN
+Republic of Korea,2015,"122,269",East Asia,KOR
+"Taipei,China",2015,"73,095",East Asia,TWN
+South Asia,2015,"-178,560",South Asia,
+Afghanistan,2015,"-7,086",South Asia,AFG
+Bangladesh,2015,"-6,965",South Asia,BGD
+Bhutan,2015,-430,South Asia,BTN
+India,2015,"-130,079",South Asia,IND
+Maldives,2015,"-1,655",South Asia,MDV
+Nepal,2015,"-6,689",South Asia,NPL
+Pakistan,2015,"-17,267",South Asia,PAK
+Sri Lanka,2015,"-8,389",South Asia,LKA
+Southeast Asia,2015,"134,318",Southeast Asia,
+Brunei Darussalam,2015,"2,910",Southeast Asia,BRN
+Cambodia,2015,"-3,638",Southeast Asia,KHM
+Indonesia,2015,"14,049",Southeast Asia,IDN
+Lao People’s Dem. Rep.,2015,"-3,624",Southeast Asia,LAO
+Malaysia,2015,"27,967",Southeast Asia,MYS
+Myanmar,2015,"-4,048",Southeast Asia,MMR
+Philippines,2015,"-23,309",Southeast Asia,PHL
+Singapore,2015,"89,817",Southeast Asia,SGP
+Thailand,2015,"26,798",Southeast Asia,THA
+Viet Nam,2015,"7,396",Southeast Asia,VNM
+The Pacific,2015,"2,880",The Pacific,
+Cook Islands,2015,-98,The Pacific,COK
+Federated States of Micronesia,2015,-128,The Pacific,FSM
+Fiji,2015,-906,The Pacific,FJI
+Kiribati,2015,-101,The Pacific,KIR
+Marshall Islands,2015,-55,The Pacific,MHL
+Nauru,2015,-43,The Pacific,NRU
+Palau,2015,-142,The Pacific,PLW
+Papua New Guinea,2015,"5,735",The Pacific,PNG
+Samoa,2015,-293,The Pacific,WSM
+Solomon Islands,2015,-17,The Pacific,SLB
+Timor-Leste,2015,-635,The Pacific,TLS
+Tonga,2015,-188,The Pacific,TON
+Tuvalu,2015,-10,The Pacific,TUV
+Vanuatu,2015,-239,The Pacific,VUT
+Developing Asia,2015,"715,790",Developing Asia,
+Developing Asia excluding NIEs,2015,"453,479",Developing Asia excluding NIEs,
+Central Asia,2016,"3,241",Central Asia,
+Armenia,2016,-944,Central Asia,ARM
+Azerbaijan,2016,"4,206",Central Asia,AZE
+Georgia,2016,"-3,869",Central Asia,GEO
+Kazakhstan,2016,"9,193",Central Asia,KAZ
+Kyrgyz Republic,2016,"-2,137",Central Asia,KGZ
+Tajikistan,2016,"-2,132",Central Asia,TJK
+Turkmenistan,2016,887,Central Asia,TKM
+Uzbekistan,2016,"-1,964",Central Asia,UZB
+East Asia,2016,"668,216",East Asia,
+"Hong Kong, China",2016,"-16,708",East Asia,HKG
+Mongolia,2016,"1,337",East Asia,MNG
+People's Republic of China,2016,"494,077",East Asia,CHN
+Republic of Korea,2016,"118,895",East Asia,KOR
+"Taipei,China",2016,"70,615",East Asia,TWN
+South Asia,2016,"-161,647",South Asia,
+Afghanistan,2016,"-5,541",South Asia,AFG
+Bangladesh,2016,"-6,460",South Asia,BGD
+Bhutan,2016,-565,South Asia,BTN
+India,2016,"-112,442",South Asia,IND
+Maldives,2016,"-1,839",South Asia,MDV
+Nepal,2016,"-6,427",South Asia,NPL
+Pakistan,2016,"-19,283",South Asia,PAK
+Sri Lanka,2016,"-9,090",South Asia,LKA
+Southeast Asia,2016,"129,504",Southeast Asia,
+Brunei Darussalam,2016,"2,461",Southeast Asia,BRN
+Cambodia,2016,"-3,575",Southeast Asia,KHM
+Indonesia,2016,"15,318",Southeast Asia,IDN
+Lao People’s Dem. Rep.,2016,"-2,257",Southeast Asia,LAO
+Malaysia,2016,"24,439",Southeast Asia,MYS
+Myanmar,2016,"-4,394",Southeast Asia,MMR
+Philippines,2016,"-35,549",Southeast Asia,PHL
+Singapore,2016,"85,479",Southeast Asia,SGP
+Thailand,2016,"36,539",Southeast Asia,THA
+Viet Nam,2016,"11,042",Southeast Asia,VNM
+The Pacific,2016,"2,640",The Pacific,
+Cook Islands,2016,-92,The Pacific,COK
+Federated States of Micronesia,2016,-110,The Pacific,FSM
+Fiji,2016,"-1,000",The Pacific,FJI
+Kiribati,2016,-95,The Pacific,KIR
+Marshall Islands,2016,-61,The Pacific,MHL
+Nauru,2016,-39,The Pacific,NRU
+Palau,2016,-141,The Pacific,PLW
+Papua New Guinea,2016,"5,428",The Pacific,PNG
+Samoa,2016,-270,The Pacific,WSM
+Solomon Islands,2016,13,The Pacific,SLB
+Timor-Leste,2016,-539,The Pacific,TLS
+Tonga,2016,-179,The Pacific,TON
+Tuvalu,2016,-14,The Pacific,TUV
+Vanuatu,2016,-261,The Pacific,VUT
+Developing Asia,2016,"641,954",Developing Asia,
+Developing Asia excluding NIEs,2016,"383,673",Developing Asia excluding NIEs,
+Central Asia,2017,"14,345",Central Asia,
+Armenia,2017,"-1,281",Central Asia,ARM
+Azerbaijan,2017,"6,694",Central Asia,AZE
+Georgia,2017,"-3,907",Central Asia,GEO
+Kazakhstan,2017,"17,494",Central Asia,KAZ
+Kyrgyz Republic,2017,"-2,332",Central Asia,KGZ
+Tajikistan,2017,"-1,577",Central Asia,TJK
+Turkmenistan,2017,900,Central Asia,TKM
+Uzbekistan,2017,"-1,645",Central Asia,UZB
+East Asia,2017,"654,494",East Asia,
+"Hong Kong, China",2017,"-24,000",East Asia,HKG
+Mongolia,2017,"1,470",East Asia,MNG
+People's Republic of China,2017,"476,100",East Asia,CHN
+Republic of Korea,2017,"119,889",East Asia,KOR
+"Taipei,China",2017,"81,035",East Asia,TWN
+South Asia,2017,"-227,020",South Asia,
+Afghanistan,2017,"-6,342",South Asia,AFG
+Bangladesh,2017,"-9,472",South Asia,BGD
+Bhutan,2017,-468,South Asia,BTN
+India,2017,"-164,069",South Asia,IND
+Maldives,2017,"-2,023",South Asia,MDV
+Nepal,2017,"-8,458",South Asia,NPL
+Pakistan,2017,"-26,568",South Asia,PAK
+Sri Lanka,2017,"-9,620",South Asia,LKA
+Southeast Asia,2017,"124,914",Southeast Asia,
+Brunei Darussalam,2017,"2,745",Southeast Asia,BRN
+Cambodia,2017,"-3,857",Southeast Asia,KHM
+Indonesia,2017,"18,892",Southeast Asia,IDN
+Lao People’s Dem. Rep.,2017,"-2,454",Southeast Asia,LAO
+Malaysia,2017,"27,463",Southeast Asia,MYS
+Myanmar,2017,"-4,637",Southeast Asia,MMR
+Philippines,2017,"-41,191",Southeast Asia,PHL
+Singapore,2017,"84,701",Southeast Asia,SGP
+Thailand,2017,"31,866",Southeast Asia,THA
+Viet Nam,2017,"11,385",Southeast Asia,VNM
+The Pacific,2017,"2,598",The Pacific,
+Cook Islands,2017,-105,The Pacific,COK
+Federated States of Micronesia,2017,,The Pacific,FSM
+Fiji,2017,"-1,081",The Pacific,FJI
+Kiribati,2017,-104,The Pacific,KIR
+Marshall Islands,2017,,The Pacific,MHL
+Nauru,2017,-45,The Pacific,NRU
+Palau,2017,,The Pacific,PLW
+Papua New Guinea,2017,"5,342",The Pacific,PNG
+Samoa,2017,-278,The Pacific,WSM
+Solomon Islands,2017,14,The Pacific,SLB
+Timor-Leste,2017,-664,The Pacific,TLS
+Tonga,2017,-210,The Pacific,TON
+Tuvalu,2017,-14,The Pacific,TUV
+Vanuatu,2017,-256,The Pacific,VUT
+Developing Asia,2017,"569,331",Developing Asia,
+Developing Asia excluding NIEs,2017,"307,705",Developing Asia excluding NIEs,
+Central Asia,2018,"18,269",Central Asia,
+Armenia,2018,"-1,503",Central Asia,ARM
+Azerbaijan,2018,"9,232",Central Asia,AZE
+Georgia,2018,"-4,180",Central Asia,GEO
+Kazakhstan,2018,"19,036",Central Asia,KAZ
+Kyrgyz Republic,2018,"-2,685",Central Asia,KGZ
+Tajikistan,2018,"-1,536",Central Asia,TJK
+Turkmenistan,2018,"1,200",Central Asia,TKM
+Uzbekistan,2018,"-1,295",Central Asia,UZB
+East Asia,2018,"617,873",East Asia,
+"Hong Kong, China",2018,"-38,346",East Asia,HKG
+Mongolia,2018,"1,400",East Asia,MNG
+People's Republic of China,2018,"445,608",East Asia,CHN
+Republic of Korea,2018,"116,954",East Asia,KOR
+"Taipei,China",2018,"92,257",East Asia,TWN
+South Asia,2018,"-265,639",South Asia,
+Afghanistan,2018,"-6,292",South Asia,AFG
+Bangladesh,2018,"-14,484",South Asia,BGD
+Bhutan,2018,-472,South Asia,BTN
+India,2018,"-191,445",South Asia,IND
+Maldives,2018,"-2,247",South Asia,MDV
+Nepal,2018,"-9,996",South Asia,NPL
+Pakistan,2018,"-30,667",South Asia,PAK
+Sri Lanka,2018,"-10,036",South Asia,LKA
+Southeast Asia,2018,"105,773",Southeast Asia,
+Brunei Darussalam,2018,"2,723",Southeast Asia,BRN
+Cambodia,2018,"-4,212",Southeast Asia,KHM
+Indonesia,2018,"15,267",Southeast Asia,IDN
+Lao People’s Dem. Rep.,2018,"-3,010",Southeast Asia,LAO
+Malaysia,2018,"27,688",Southeast Asia,MYS
+Myanmar,2018,"-5,303",Southeast Asia,MMR
+Philippines,2018,"-44,209",Southeast Asia,PHL
+Singapore,2018,"85,245",Southeast Asia,SGP
+Thailand,2018,"22,539",Southeast Asia,THA
+Viet Nam,2018,"9,044",Southeast Asia,VNM
+The Pacific,2018,"2,381",The Pacific,
+Cook Islands,2018,-111,The Pacific,COK
+Federated States of Micronesia,2018,,The Pacific,FSM
+Fiji,2018,"-1,083",The Pacific,FJI
+Kiribati,2018,-111,The Pacific,KIR
+Marshall Islands,2018,,The Pacific,MHL
+Nauru,2018,-45,The Pacific,NRU
+Palau,2018,,The Pacific,PLW
+Papua New Guinea,2018,"5,128",The Pacific,PNG
+Samoa,2018,-287,The Pacific,WSM
+Solomon Islands,2018,34,The Pacific,SLB
+Timor-Leste,2018,-630,The Pacific,TLS
+Tonga,2018,-232,The Pacific,TON
+Tuvalu,2018,-15,The Pacific,TUV
+Vanuatu,2018,-266,The Pacific,VUT
+Developing Asia,2018,"478,657",Developing Asia,
+Developing Asia excluding NIEs,2018,"222,547",Developing Asia excluding NIEs,
+Central Asia,2019,"16,590",Central Asia,
+Armenia,2019,"-1,568",Central Asia,ARM
+Azerbaijan,2019,"9,116",Central Asia,AZE
+Georgia,2019,"-4,584",Central Asia,GEO
+Kazakhstan,2019,"17,875",Central Asia,KAZ
+Kyrgyz Republic,2019,"-2,921",Central Asia,KGZ
+Tajikistan,2019,"-1,552",Central Asia,TJK
+Turkmenistan,2019,"1,400",Central Asia,TKM
+Uzbekistan,2019,"-1,174",Central Asia,UZB
+East Asia,2019,"591,139",East Asia,
+"Hong Kong, China",2019,"-61,051",East Asia,HKG
+Mongolia,2019,"1,450",East Asia,MNG
+People's Republic of China,2019,"436,495",East Asia,CHN
+Republic of Korea,2019,"113,500",East Asia,KOR
+"Taipei,China",2019,"100,745",East Asia,TWN
+South Asia,2019,"-295,853",South Asia,
+Afghanistan,2019,"-6,481",South Asia,AFG
+Bangladesh,2019,"-18,332",South Asia,BGD
+Bhutan,2019,-433,South Asia,BTN
+India,2019,"-213,948",South Asia,IND
+Maldives,2019,"-2,486",South Asia,MDV
+Nepal,2019,"-11,518",South Asia,NPL
+Pakistan,2019,"-32,018",South Asia,PAK
+Sri Lanka,2019,"-10,638",South Asia,LKA
+Southeast Asia,2019,"82,909",Southeast Asia,
+Brunei Darussalam,2019,"2,684",Southeast Asia,BRN
+Cambodia,2019,"-4,418",Southeast Asia,KHM
+Indonesia,2019,"13,283",Southeast Asia,IDN
+Lao People’s Dem. Rep.,2019,"-2,979",Southeast Asia,LAO
+Malaysia,2019,"28,294",Southeast Asia,MYS
+Myanmar,2019,"-6,113",Southeast Asia,MMR
+Philippines,2019,"-47,966",Southeast Asia,PHL
+Singapore,2019,"86,332",Southeast Asia,SGP
+Thailand,2019,"10,770",Southeast Asia,THA
+Viet Nam,2019,"3,023",Southeast Asia,VNM
+The Pacific,2019,"2,550",The Pacific,
+Cook Islands,2019,-119,The Pacific,COK
+Federated States of Micronesia,2019,,The Pacific,FSM
+Fiji,2019,"-1,094",The Pacific,FJI
+Kiribati,2019,-112,The Pacific,KIR
+Marshall Islands,2019,,The Pacific,MHL
+Nauru,2019,-43,The Pacific,NRU
+Palau,2019,,The Pacific,PLW
+Papua New Guinea,2019,"5,460",The Pacific,PNG
+Samoa,2019,-291,The Pacific,WSM
+Solomon Islands,2019,24,The Pacific,SLB
+Timor-Leste,2019,-725,The Pacific,TLS
+Tonga,2019,-254,The Pacific,TON
+Tuvalu,2019,-14,The Pacific,TUV
+Vanuatu,2019,-280,The Pacific,VUT
+Developing Asia,2019,"397,335",Developing Asia,
+Developing Asia excluding NIEs,2019,"157,810",Developing Asia excluding NIEs,
