@@ -1,4 +1,9 @@
 # R for travis: see documentation at https://docs.travis-ci.com/user/languages/r
 
-language: r
+language: R
+
+install:
+ - Rscript -e 'install.packages(c('shiny','shinydashboard'))'
+script: make test
+
 cache: packages
