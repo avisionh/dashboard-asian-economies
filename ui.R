@@ -49,7 +49,7 @@ ui <- dashboardPage(
           h2(icon("info"), "Welcome"), hr(),
           
           div(
-            style = "font-size: 2.3vh;",
+            style = "font-size: 2vh;",
             "Welcome to an R Shiny dashboard of Asian Economies.",
             p("This dashboard collates economic information on a number of Asian countries.",
               strong("No responsibility will be take by the author if misuse of this information is made."))
@@ -61,7 +61,7 @@ ui <- dashboardPage(
           div(
             "Each of the tabs in the app are designed to do the following things:",
             tags$ul(
-              style = "font-size: 1.2vh;",
+              style = "font-size: 2vh;",
               tags$li("Navigate across different tabs by clicking on the options in the left-hand black vertical box."),
               tags$li("The ", strong("title"), " tab generic information.")
             )

@@ -16,10 +16,19 @@
 library(shiny)
 library(shinydashboard)
 
+# data import and manipulation
+library(readr)
+library(dplyr)
+library(ggplot2)
+
 
 
 # Data Import -------------------------------------------------------------
+data_gdp <- read_csv(file = "data/ADO_GDP_201819AreForecasts.csv")
+data_basicstats <- read_csv(file = "data/BasicStatistics_2018.csv")
+data_exchangerates <- read_csv(file = "data/ADO_ExchangeRates_2018.csv")
+data_tradebalance <- read_csv(file = "data/ADO_TradeBalance_201819AreForecasts.csv")
+data_externaldebtoutstanding <- read_csv(file = "data/ADO_ExternalDebtOutstanding_2018.csv")
 
-# data_exchangerates <- readr::read_csv()
-# data_externaldebtoutstanding <- readr::read_csv()
+
 
