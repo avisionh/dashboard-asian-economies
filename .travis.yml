@@ -1,9 +1,17 @@
 # R for travis: see documentation at https://docs.travis-ci.com/user/languages/r
 
-language: R
-
+language: r
+before_install:
+ - sudo mkdir -p /usr/lib/R/library
+ - echo 'R_LIBS=/usr/lib/R/library:/usr/lib/R/site-library/' > ~/.Renviron
+ - sudo chmod 2777 /usr/lib/R/library
 install:
- - Rscript -e 'install.packages(c('shiny','shinydashboard'))'
-script: make test
+ - R -e "0" --args --bootstrap-packrat
+cache:
+  directories:
+  - "$TRAVIS_BUILD_DIR/packrat/src"
+  - "$TRAVIS_BUILD_DIR/packrat/lib"
+  packages: true
+script:
+ - nohup R --slave --no-restore -e 'shiny::runApp(port = 3000)' &
 
-cache: packages
