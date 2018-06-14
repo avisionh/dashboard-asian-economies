@@ -9,6 +9,17 @@
 # install.packages(c("shiny", "shinydashboard", "DT", "RODBC", "tidyverse", "scales"))
 # install.packages("shinyBS")
 
+
+# Packages ------------------------------------------------------------
+
 # shiny app development and appearance
 library(shiny)
 library(shinydashboard)
+
+
+
+# Data Import -------------------------------------------------------------
+
+# data_exchangerates <- readr::read_csv()
+# data_externaldebtoutstanding <- readr::read_csv()
+
