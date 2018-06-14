@@ -1,4 +1,4 @@
-Regional Member,Year,Trade Balance ($ million),Subregion,Country Code
+RegionalMember,Year,TradeBalanceInUSDollarMillion,Subregion,CountryCode
 Afghanistan,2012,"-9,499",South Asia,AFG
 Afghanistan,2013,"-8,449",South Asia,AFG
 Afghanistan,2014,"-7,928",South Asia,AFG

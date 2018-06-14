@@ -1,4 +1,4 @@
-Regional Member,Year,Exchange rates to the United States dollar (annual average),Subregion,Country Code,Currency,Symbol
+﻿RegionalMember,Year,ExchangeRatesInUSDollar,Subregion,CountryCode,Currency,Symbol
 Armenia,2013,409.6,Central Asia,ARM,Dram,AMD
 Azerbaijan,2013,0.8,Central Asia,AZE,Azerbaijan new manat,AZN
 Georgia,2013,1.7,Central Asia,GEO,Lari,GEL

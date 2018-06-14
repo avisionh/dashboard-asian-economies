@@ -1,4 +1,4 @@
-Regional Member,Year,Trade Balance ($ million),Subregion,Country Code
+﻿RegionalMember,Year,TradeBalanceInUSDollarMillion,Subregion,CountryCode
 Central Asia,2013,"49,418",Central Asia,
 Armenia,2013,"-2,196",Central Asia,ARM
 Azerbaijan,2013,"20,621",Central Asia,AZE

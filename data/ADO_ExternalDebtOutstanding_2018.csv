@@ -1,4 +1,4 @@
-Regional Member,Year,"External debt outstanding ($ million)					",Subregion,Country Code
+﻿RegionalMember,Year,ExternalDebtOutstandingInUSDollarMillion,Subregion,CountryCode
 Armenia,2013,"3,899",Central Asia,ARM
 Azerbaijan,2013,"6,059",Central Asia,AZE
 Georgia,2013,"10,542",Central Asia,GEO
