@@ -1,0 +1,261 @@
+RegionalMember,Year,GDPGrowthRatePerYearPercentage,Subregion,CountryCode
+Afghanistan,2014,1.3,South Asia,AFG
+Afghanistan,2015,0.8,South Asia,AFG
+Afghanistan,2016,2.0,South Asia,AFG
+Afghanistan,2017*,2.5,South Asia,AFG
+Afghanistan,2018*,3.0,South Asia,AFG
+Armenia,2014,3.6,Central Asia,ARM
+Armenia,2015,3.0,Central Asia,ARM
+Armenia,2016,0.2,Central Asia,ARM
+Armenia,2017*,3.8,Central Asia,ARM
+Armenia,2018*,3.0,Central Asia,ARM
+Azerbaijan,2014,2.8,Central Asia,AZE
+Azerbaijan,2015,1.1,Central Asia,AZE
+Azerbaijan,2016,-3.8,Central Asia,AZE
+Azerbaijan,2017*,-1.3,Central Asia,AZE
+Azerbaijan,2018*,1.0,Central Asia,AZE
+Bangladesh,2014,6.1,South Asia,BGD
+Bangladesh,2015,6.6,South Asia,BGD
+Bangladesh,2016,7.1,South Asia,BGD
+Bangladesh,2017*,7.2,South Asia,BGD
+Bangladesh,2018*,6.9,South Asia,BGD
+Bhutan,2014,4.0,South Asia,BTN
+Bhutan,2015,6.1,South Asia,BTN
+Bhutan,2016,6.4,South Asia,BTN
+Bhutan,2017*,6.9,South Asia,BTN
+Bhutan,2018*,8.0,South Asia,BTN
+Brunei Darussalam,2014,-2.5,Southeast Asia,BRN
+Brunei Darussalam,2015,-0.4,Southeast Asia,BRN
+Brunei Darussalam,2016,-2.5,Southeast Asia,BRN
+Brunei Darussalam,2017*,0.0,Southeast Asia,BRN
+Brunei Darussalam,2018*,1.0,Southeast Asia,BRN
+Cambodia,2014,7.1,Southeast Asia,KHM
+Cambodia,2015,7.0,Southeast Asia,KHM
+Cambodia,2016,7.0,Southeast Asia,KHM
+Cambodia,2017*,7.1,Southeast Asia,KHM
+Cambodia,2018*,7.1,Southeast Asia,KHM
+Central Asia,2014,5.2,Central Asia,
+Central Asia,2015,3.1,Central Asia,
+Central Asia,2016,2.1,Central Asia,
+Central Asia,2017*,3.3,Central Asia,
+Central Asia,2018*,3.9,Central Asia,
+"China, People's Republic of",2014,7.3,East Asia,CHN
+"China, People's Republic of",2015,6.9,East Asia,CHN
+"China, People's Republic of",2016,6.7,East Asia,CHN
+"China, People's Republic of",2017*,6.7,East Asia,CHN
+"China, People's Republic of",2018*,6.4,East Asia,CHN
+Cook Islands,2014,3.2,The Pacific,COK
+Cook Islands,2015,3.2,The Pacific,COK
+Cook Islands,2016,8.8,The Pacific,COK
+Cook Islands,2017*,5.0,The Pacific,COK
+Cook Islands,2018*,5.0,The Pacific,COK
+Developing Asia,2014,6.4,Developing Asia,
+Developing Asia,2015,6.0,Developing Asia,
+Developing Asia,2016,5.8,Developing Asia,
+Developing Asia,2017*,5.9,Developing Asia,
+Developing Asia,2018*,5.8,Developing Asia,
+Developing Asia excluding the Newly Industrialized Economies,2014,6.8,Developing Asia,
+Developing Asia excluding the Newly Industrialized Economies,2015,6.6,Developing Asia,
+Developing Asia excluding the Newly Industrialized Economies,2016,6.3,Developing Asia,
+Developing Asia excluding the Newly Industrialized Economies,2017*,6.4,Developing Asia,
+Developing Asia excluding the Newly Industrialized Economies,2018*,6.3,Developing Asia,
+East Asia,2014,6.6,East Asia,
+East Asia,2015,6.1,East Asia,
+East Asia,2016,6.0,East Asia,
+East Asia,2017*,6.0,East Asia,
+East Asia,2018*,5.8,East Asia,
+Fiji,2014,5.6,The Pacific,FJI
+Fiji,2015,3.8,The Pacific,FJI
+Fiji,2016,0.4,The Pacific,FJI
+Fiji,2017*,3.6,The Pacific,FJI
+Fiji,2018*,3.9,The Pacific,FJI
+Georgia,2014,4.6,Central Asia,GEO
+Georgia,2015,2.9,Central Asia,GEO
+Georgia,2016,2.7,Central Asia,GEO
+Georgia,2017*,4.2,Central Asia,GEO
+Georgia,2018*,4.5,Central Asia,GEO
+"Hong Kong, China",2014,2.6,East Asia,HKG
+"Hong Kong, China",2015,2.4,East Asia,HKG
+"Hong Kong, China",2016,1.9,East Asia,HKG
+"Hong Kong, China",2017*,3.6,East Asia,HKG
+"Hong Kong, China",2018*,3.2,East Asia,HKG
+India,2014,7.5,South Asia,IND
+India,2015,8.0,South Asia,IND
+India,2016,7.1,South Asia,IND
+India,2017*,7.0,South Asia,IND
+India,2018*,7.4,South Asia,IND
+Indonesia,2014,5.0,Southeast Asia,IDN
+Indonesia,2015,4.9,Southeast Asia,IDN
+Indonesia,2016,5.0,Southeast Asia,IDN
+Indonesia,2017*,5.1,Southeast Asia,IDN
+Indonesia,2018*,5.3,Southeast Asia,IDN
+Kazakhstan,2014,4.2,Central Asia,KAZ
+Kazakhstan,2015,1.2,Central Asia,KAZ
+Kazakhstan,2016,1.0,Central Asia,KAZ
+Kazakhstan,2017*,2.7,Central Asia,KAZ
+Kazakhstan,2018*,3.0,Central Asia,KAZ
+Kiribati,2014,0.4,The Pacific,KIR
+Kiribati,2015,3.5,The Pacific,KIR
+Kiribati,2016,1.8,The Pacific,KIR
+Kiribati,2017*,2.0,The Pacific,KIR
+Kiribati,2018*,2.3,The Pacific,KIR
+"Korea, Republic of",2014,3.3,East Asia,KOR
+"Korea, Republic of",2015,2.8,East Asia,KOR
+"Korea, Republic of",2016,2.8,East Asia,KOR
+"Korea, Republic of",2017*,2.8,East Asia,KOR
+"Korea, Republic of",2018*,2.8,East Asia,KOR
+Kyrgyz Republic,2014,4.0,Central Asia,KGZ
+Kyrgyz Republic,2015,3.9,Central Asia,KGZ
+Kyrgyz Republic,2016,3.8,Central Asia,KGZ
+Kyrgyz Republic,2017*,4.0,Central Asia,KGZ
+Kyrgyz Republic,2018*,4.0,Central Asia,KGZ
+Lao People's Democratic Republic,2014,7.5,Southeast Asia,LAO
+Lao People's Democratic Republic,2015,6.7,Southeast Asia,LAO
+Lao People's Democratic Republic,2016,6.8,Southeast Asia,LAO
+Lao People's Democratic Republic,2017*,6.9,Southeast Asia,LAO
+Lao People's Democratic Republic,2018*,7.0,Southeast Asia,LAO
+Malaysia,2014,6.0,Southeast Asia,MYS
+Malaysia,2015,5.0,Southeast Asia,MYS
+Malaysia,2016,4.2,Southeast Asia,MYS
+Malaysia,2017*,5.4,Southeast Asia,MYS
+Malaysia,2018*,5.4,Southeast Asia,MYS
+Maldives,2014,6.0,South Asia,MDV
+Maldives,2015,2.8,South Asia,MDV
+Maldives,2016,3.4,South Asia,MDV
+Maldives,2017*,4.2,South Asia,MDV
+Maldives,2018*,4.4,South Asia,MDV
+Marshall Islands,2014,-0.8,The Pacific,MHL
+Marshall Islands,2015,-0.4,The Pacific,MHL
+Marshall Islands,2016,1.9,The Pacific,MHL
+Marshall Islands,2017*,4.0,The Pacific,MHL
+Marshall Islands,2018*,2.5,The Pacific,MHL
+"Micronesia, Federated States of",2014,-2.2,The Pacific,FSM
+"Micronesia, Federated States of",2015,4.9,The Pacific,FSM
+"Micronesia, Federated States of",2016,-0.1,The Pacific,FSM
+"Micronesia, Federated States of",2017*,2.0,The Pacific,FSM
+"Micronesia, Federated States of",2018*,2.0,The Pacific,FSM
+Mongolia,2014,7.9,East Asia,MNG
+Mongolia,2015,2.4,East Asia,MNG
+Mongolia,2016,1.0,East Asia,MNG
+Mongolia,2017*,4.0,East Asia,MNG
+Mongolia,2018*,3.0,East Asia,MNG
+Myanmar,2014,8.0,Southeast Asia,MMR
+Myanmar,2015,7.0,Southeast Asia,MMR
+Myanmar,2016,5.9,Southeast Asia,MMR
+Myanmar,2017*,7.7,Southeast Asia,MMR
+Myanmar,2018*,8.0,Southeast Asia,MMR
+Nauru,2014,36.5,The Pacific,NRU
+Nauru,2015,2.8,The Pacific,NRU
+Nauru,2016,10.4,The Pacific,NRU
+Nauru,2017*,4.0,The Pacific,NRU
+Nauru,2018*,-4.0,The Pacific,NRU
+Nepal,2014,5.7,South Asia,NPL
+Nepal,2015,3.0,South Asia,NPL
+Nepal,2016,0.0,South Asia,NPL
+Nepal,2017*,6.9,South Asia,NPL
+Nepal,2018*,4.7,South Asia,NPL
+Pakistan,2014,4.1,South Asia,PAK
+Pakistan,2015,4.1,South Asia,PAK
+Pakistan,2016,4.5,South Asia,PAK
+Pakistan,2017*,5.3,South Asia,PAK
+Pakistan,2018*,5.5,South Asia,PAK
+Palau,2014,4.8,The Pacific,PLW
+Palau,2015,10.9,The Pacific,PLW
+Palau,2016,1.9,The Pacific,PLW
+Palau,2017*,0.5,The Pacific,PLW
+Palau,2018*,3.5,The Pacific,PLW
+Papua New Guinea,2014,13.3,The Pacific,PNG
+Papua New Guinea,2015,12.0,The Pacific,PNG
+Papua New Guinea,2016,2.0,The Pacific,PNG
+Papua New Guinea,2017*,2.5,The Pacific,PNG
+Papua New Guinea,2018*,2.8,The Pacific,PNG
+Philippines,2014,6.1,Southeast Asia,PHL
+Philippines,2015,6.1,Southeast Asia,PHL
+Philippines,2016,6.9,Southeast Asia,PHL
+Philippines,2017*,6.5,Southeast Asia,PHL
+Philippines,2018*,6.7,Southeast Asia,PHL
+Samoa,2014,1.2,The Pacific,WSM
+Samoa,2015,1.6,The Pacific,WSM
+Samoa,2016,7.1,The Pacific,WSM
+Samoa,2017*,3.0,The Pacific,WSM
+Samoa,2018*,1.0,The Pacific,WSM
+Singapore,2014,3.6,Southeast Asia,SGP
+Singapore,2015,1.9,Southeast Asia,SGP
+Singapore,2016,2.0,Southeast Asia,SGP
+Singapore,2017*,2.7,Southeast Asia,SGP
+Singapore,2018*,2.7,Southeast Asia,SGP
+Solomon Islands,2014,2.0,The Pacific,SLB
+Solomon Islands,2015,2.9,The Pacific,SLB
+Solomon Islands,2016,3.2,The Pacific,SLB
+Solomon Islands,2017*,3.0,The Pacific,SLB
+Solomon Islands,2018*,3.0,The Pacific,SLB
+South Asia,2014,6.7,South Asia,
+South Asia,2015,7.3,South Asia,
+South Asia,2016,6.7,South Asia,
+South Asia,2017*,6.7,South Asia,
+South Asia,2018*,7.0,South Asia,
+Southeast Asia,2014,4.6,Southeast Asia,
+Southeast Asia,2015,4.6,Southeast Asia,
+Southeast Asia,2016,4.6,Southeast Asia,
+Southeast Asia,2017*,5.0,Southeast Asia,
+Southeast Asia,2018*,5.1,Southeast Asia,
+Sri Lanka,2014,5.0,South Asia,LKA
+Sri Lanka,2015,4.8,South Asia,LKA
+Sri Lanka,2016,4.4,South Asia,LKA
+Sri Lanka,2017*,4.5,South Asia,LKA
+Sri Lanka,2018*,5.0,South Asia,LKA
+"Taipei,China",2014,4.0,East Asia,TWN
+"Taipei,China",2015,0.7,East Asia,TWN
+"Taipei,China",2016,1.5,East Asia,TWN
+"Taipei,China",2017*,2.0,East Asia,TWN
+"Taipei,China",2018*,2.2,East Asia,TWN
+Tajikistan,2014,6.7,Central Asia,TJK
+Tajikistan,2015,6.0,Central Asia,TJK
+Tajikistan,2016,6.9,Central Asia,TJK
+Tajikistan,2017*,5.0,Central Asia,TJK
+Tajikistan,2018*,5.5,Central Asia,TJK
+Thailand,2014,0.9,Southeast Asia,THA
+Thailand,2015,2.9,Southeast Asia,THA
+Thailand,2016,3.2,Southeast Asia,THA
+Thailand,2017*,3.5,Southeast Asia,THA
+Thailand,2018*,3.6,Southeast Asia,THA
+The Pacific,2014,9.6,The Pacific,
+The Pacific,2015,8.4,The Pacific,
+The Pacific,2016,2.4,The Pacific,
+The Pacific,2017*,2.9,The Pacific,
+The Pacific,2018*,3.2,The Pacific,
+Timor-Leste,2014,4.2,The Pacific,TLS
+Timor-Leste,2015,4.0,The Pacific,TLS
+Timor-Leste,2016,5.4,The Pacific,TLS
+Timor-Leste,2017*,4.0,The Pacific,TLS
+Timor-Leste,2018*,6.0,The Pacific,TLS
+Tonga,2014,2.1,The Pacific,TON
+Tonga,2015,3.7,The Pacific,TON
+Tonga,2016,3.1,The Pacific,TON
+Tonga,2017*,2.8,The Pacific,TON
+Tonga,2018*,3.5,The Pacific,TON
+Turkmenistan,2014,10.3,Central Asia,TKM
+Turkmenistan,2015,6.5,Central Asia,TKM
+Turkmenistan,2016,6.2,Central Asia,TKM
+Turkmenistan,2017*,6.5,Central Asia,TKM
+Turkmenistan,2018*,6.5,Central Asia,TKM
+Tuvalu,2014,2.2,The Pacific,TUV
+Tuvalu,2015,2.6,The Pacific,TUV
+Tuvalu,2016,4.0,The Pacific,TUV
+Tuvalu,2017*,3.2,The Pacific,TUV
+Tuvalu,2018*,3.0,The Pacific,TUV
+Uzbekistan,2014,8.1,Central Asia,UZB
+Uzbekistan,2015,8.0,Central Asia,UZB
+Uzbekistan,2016,7.8,Central Asia,UZB
+Uzbekistan,2017*,6.8,Central Asia,UZB
+Uzbekistan,2018*,7.5,Central Asia,UZB
+Vanuatu,2014,2.3,The Pacific,VUT
+Vanuatu,2015,1.6,The Pacific,VUT
+Vanuatu,2016,4.0,The Pacific,VUT
+Vanuatu,2017*,4.5,The Pacific,VUT
+Vanuatu,2018*,4.0,The Pacific,VUT
+Viet Nam,2014,6.0,Southeast Asia,VNM
+Viet Nam,2015,6.7,Southeast Asia,VNM
+Viet Nam,2016,6.2,Southeast Asia,VNM
+Viet Nam,2017*,6.3,Southeast Asia,VNM
+Viet Nam,2018*,6.5,Southeast Asia,VNM
