@@ -15,6 +15,7 @@
 # shiny app development and appearance
 library(shiny)
 library(shinydashboard)
+library(shinyBS)
 library(DT)
 
 # data import and manipulation
