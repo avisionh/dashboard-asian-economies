@@ -72,10 +72,10 @@ server <- function(input, output, session) {
         tipify(
           el = valueBox(
             value = paste0(value_current_gdp(), "%"),
-            subtitle = "GDP Change from 2018-19", icon = icon(name = "certificate"), color = "green"
+            subtitle = "Forecast: GDP Change from 2018-19", icon = icon(name = "certificate"), color = "green"
           ),
           #note can't put apostrophes in title
-          title = "This is the percentage change in the country GDP from 2018 to 2019.", 
+          title = "This is a forecast. It shows the percentage change in the country GDP from 2018 to 2019.", 
           placement = "left", trigger = "hover")
       )
     }
