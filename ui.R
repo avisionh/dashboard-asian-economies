@@ -26,8 +26,15 @@ ui <- dashboardPage(
       # Guidance tab
       menuItem(
         text = "Guidance",
-        icon = icon("info-circle"),
+        icon = icon(name = "info-circle"),
         tabName = "info_guidance"
+      ),
+      
+      # Country Report tab
+      menuItem(
+        text = "Country Report",
+        icon = icon(name = "window-maximize"),
+        tabName = "report_country"
       )
                
                
@@ -108,6 +115,25 @@ ui <- dashboardPage(
           hr()
         ) #box
       
+      ), #tabItem
+    
+
+      # Country Report ----------------------------------------------------------
+  
+      tabItem(
+        tabName = "report_country",
+        selectInput(
+          inputId = "name",
+          label = "Please choose a country",
+          choices = sort(data_consolidate$Name)
+        ),
+        
+        fluidRow(
+          # Country details
+          box(
+            
+          ) #box
+        ) #fluidRow
       ) #tabItem
       
     ) #tabItems

@@ -19,16 +19,58 @@ library(shinydashboard)
 # data import and manipulation
 library(readr)
 library(dplyr)
+library(tidyr)
+library(magrittr)
 library(ggplot2)
-
 
 
 # Data Import -------------------------------------------------------------
 data_gdp <- read_csv(file = "data/ADO_GDP_201819AreForecasts.csv")
 data_basicstats <- read_csv(file = "data/BasicStatistics_2018.csv")
-data_exchangerates <- read_csv(file = "data/ADO_ExchangeRates_2018.csv")
+data_exchangerate <- read_csv(file = "data/ADO_ExchangeRates_2018.csv")
 data_tradebalance <- read_csv(file = "data/ADO_TradeBalance_201819AreForecasts.csv")
 data_externaldebtoutstanding <- read_csv(file = "data/ADO_ExternalDebtOutstanding_2018.csv")
 
 
+# Data Preparation --------------------------------------------------------
+data_spread_gdp <- data_gdp %>% 
+  spread(key = Year, value = GrossDomesticProductGrowthPerYearPercentage) %>% 
+  rename(GDPRate201819 = `2019`,
+         GDPRate201718 = `2018`,
+         GDPRate201617 = `2017`,
+         GDPRate201516 = `2016`,
+         GDPRate201415 = `2015`,
+         GDPRate201314 = `2014`,
+         GDPRate201213 = `2013`)
+data_spread_tradebalance <- data_tradebalance %>% 
+  spread(key = Year, value = TradeBalanceInUSDollarMillion) %>% 
+  rename(TradeBalance2019 = `2019`,
+         TradeBalance2018 = `2018`,
+         TradeBalance2017 = `2017`,
+         TradeBalance2016 = `2016`,
+         TradeBalance2015 = `2015`,
+         TradeBalance2014 = `2014`,
+         TradeBalance2013 = `2013`)
+data_spread_exchangerate <- data_exchangerate %>% 
+  spread(key = Year, value = ExchangeRatesInUSDollar) %>% 
+  rename(RateUSDollar2017 = `2017`,
+         RateUSDollar2016 = `2016`,
+         RateUSDollar2015 = `2015`,
+         RateUSDollar2014 = `2014`,
+         RateUSDollar2013 = `2013`)
+data_spread_debtleft <- data_externaldebtoutstanding %>% 
+  spread(key = Year, value = ExternalDebtOutstandingInUSDollarMillion) %>% 
+  rename(OutstandingDebtUSDollar2017 = `2017`,
+         OutstandingDebtUSDollar2016 = `2016`,
+         OutstandingDebtUSDollar2015 = `2015`,
+         OutstandingDebtUSDollar2014 = `2014`,
+         OutstandingDebtUSDollar2013 = `2013`)
 
+# join data together
+data_consolidate <- data_spread_gdp %>% 
+  left_join(y = data_spread_tradebalance, by = "CountryCode") %>% 
+  select(RegionalMember.x:GDPRate201819, TradeBalance2013:TradeBalance2019) %>% 
+  left_join(y = data_spread_exchangerate, by = "CountryCode") %>% 
+  select(RegionalMember.x:TradeBalance2019, Currency:RateUSDollar2017) %>% 
+  left_join(y = data_spread_debtleft, by = "CountryCode") %>% 
+  select(RegionalMember.x:RateUSDollar2017,OutstandingDebtUSDollar2017)
