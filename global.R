@@ -15,6 +15,7 @@
 # shiny app development and appearance
 library(shiny)
 library(shinydashboard)
+library(DT)
 
 # data import and manipulation
 library(readr)
@@ -22,6 +23,7 @@ library(dplyr)
 library(tidyr)
 library(magrittr)
 library(ggplot2)
+
 
 
 # Data Import -------------------------------------------------------------

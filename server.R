@@ -8,5 +8,50 @@
 #       server.R must create a function called server, like below:
 
 server <- function(input, output, session) {
+ 
+# --- Country Report --- #
+
+  # Reactive: Selected Country ----------------------------------------------
+  # create reactive function to store the user's selected country to reuse later
+  select_country <- reactive(
+    x = {
+    data_select_country <- data_consolidate %>% 
+      filter(RegionalMember == input$name)
+    
+    return(data_select_country)
+    }
+  )
+  
+
+  # Scaffold Country Details ---------------------------------------------------------
+  # 1. Fill scaffold_country_details dataframe
+  country_details <- reactive (
+    x = {
+      scaffold_country_details[,2] <- c(
+        select_country()$CountryCode,
+        select_country()$RegionalMember,
+        select_country()$Subregion
+      )
+      scaffold_country_details[,4] <- c(
+        select_country()$Symbol,
+        select_country()$Currency,
+        NA
+      )
+      
+      return(scaffold_country_details)
+    }
+  )
+  
+  # 2. Create output dataframe
+  output$table_country_details <- renderDataTable(
+    expr = {
+      datatable(
+        data = country_details(), rownames = FALSE, selection = "none",
+        options = list(lengthChange = FALSE, searching = FALSE, info = FALSE,
+                       paging = FALSE, ordering = FALSE,
+                       columnDefs = list(className = "dt-left", targets = 1:4))) %>% 
+        formatStyle(columns = c("Country Details", "Currency Details"), fontWeight = "bold")
+    }
+  )
   
 }

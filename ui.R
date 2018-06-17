@@ -50,7 +50,7 @@ ui <- dashboardPage(
         tabName = "info_guidance",
         
         box(
-          width = 7, status = "warning", solidHeader = TRUE,
+          width = 7, status = "danger", solidHeader = TRUE,
           
           # Welcome
           h2(icon("info"), "Welcome"), hr(),
@@ -84,7 +84,7 @@ ui <- dashboardPage(
         ), #box
         
         box(
-          width = 5, status = "warning", solidHeader = TRUE,
+          width = 5, status = "danger", solidHeader = TRUE,
             
           # Data Sources
           h2(icon("database"), "Data Sources"), hr(),
@@ -125,14 +125,20 @@ ui <- dashboardPage(
         selectInput(
           inputId = "name",
           label = "Please choose a country",
-          choices = sort(data_consolidate$Name)
+          choices = sort(data_consolidate$RegionalMember)
         ),
         
+
+        # Structure: Top Row ------------------------------------------------------
+        
         fluidRow(
-          # Country details
+
+          # Table: Country Details --------------------------------------------------
           box(
-            
+            title = tags$b("Country Overview"), solidHeader = TRUE, status = "danger", width = 5,
+            dataTableOutput(outputId = "table_country_details", width = "100%")
           ) #box
+          
         ) #fluidRow
       ) #tabItem
       
