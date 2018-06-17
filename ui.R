@@ -141,8 +141,9 @@ ui <- dashboardPage(
           
           column(
             width = 5,
-            valueBoxOutput(outputId = "valuebox_current_gdp", width = NULL)
-          )
+            valueBoxOutput(outputId = "valuebox_current_gdp", width = NULL),
+            valueBoxOutput(outputId = "valuebox_current_debt", width = NULL)
+          ) #column
           
         ) #fluidRow
       ) #tabItem

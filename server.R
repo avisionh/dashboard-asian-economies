@@ -56,7 +56,7 @@ server <- function(input, output, session) {
   
 
   # InfoBox: Current GDP Change per year ------------------------------------
-  # 1. Extract current GDP Changer per year
+  # 1. Extract current GDP Change per year
   value_current_gdp <- reactive(
     x = {
       current_gdp <- select_country() %>% 
@@ -76,9 +76,40 @@ server <- function(input, output, session) {
           ),
           #note can't put apostrophes in title
           title = "This is a forecast. It shows the percentage change in the country GDP from 2018 to 2019.", 
-          placement = "left", trigger = "hover")
-      )
+          placement = "left", trigger = "hover"
+        ) #tipify
+      ) #div
+    }
+  ) #renderValueBox
+  
+
+  # InfoBox: Current Debt Outstanding ---------------------------------------
+  # 1. Extract latest debt outstanding value
+  value_debt_outstanding <- reactive(
+    x = {
+      current_debt <- select_country() %>% 
+        select(OutstandingDebtUSDollar2017)
+      return(current_debt)
     }
   )
   
+  # 2. Create output valueBox
+  output$valuebox_current_debt <- renderValueBox(
+    expr = {
+      tags$div(
+        tipify(
+          el = valueBox(
+            value = paste0("$", value_debt_outstanding(), "m"),
+            subtitle = "Latest Debt Outstanding", icon = icon(name = "certificate"), color = "red"
+          ),
+          title = "This is the latest value we have on the country outstanding debt for 2017.",
+          placement = "left", trigger = "hover"
+        ) #tipify
+      ) #div
+    }
+  ) #renderValueBox
+
+  
+  
+    
 }
