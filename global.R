@@ -25,7 +25,8 @@ library(tidyr)
 library(magrittr)
 library(ggplot2)
 
-
+# load external functions
+source("functions.R")
 
 # Data Import -------------------------------------------------------------
 data_gdp <- read_csv(file = "data/ADO_GDP_201819AreForecasts.csv")
@@ -82,6 +83,11 @@ data_consolidate <- data_spread_gdp %>%
   select(RegionalMember.x:RateUSDollar2017, OutstandingDebtUSDollar2013:OutstandingDebtUSDollar2017) %>% 
   rename(RegionalMember = RegionalMember.x,
          Subregion = Subregion.x)
+
+# create valueBox and infoBox information
+data_consolidate <- data_consolidate %>% 
+  add_columns_gdp(column = data_consolidate$GDPRate201819) %>% 
+  add_columns_debt(column = data_consolidate$OutstandingDebtUSDollar2017)
 
 
 # Scaffold ----------------------------------------------------------------

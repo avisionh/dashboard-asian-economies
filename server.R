@@ -60,7 +60,7 @@ server <- function(input, output, session) {
   value_current_gdp <- reactive(
     x = {
       current_gdp <- select_country() %>% 
-        select(GDPRate201819)
+        select(GDPRate201819, colour_gdp, icon_gdp, tooltip_gdp)
       return(current_gdp)  
     }
   )
@@ -71,11 +71,13 @@ server <- function(input, output, session) {
       tags$div(
         tipify(
           el = valueBox(
-            value = paste0(value_current_gdp(), "%"),
-            subtitle = "Forecasted GDP Change 2018-19", icon = icon(name = "certificate"), color = "green"
+            value = paste0(value_current_gdp()$GDPRate201819, "%"),
+            subtitle = "Forecasted 2018-19 GDP Rate", 
+            icon = icon(name = value_current_gdp()$icon_gdp), 
+            color = value_current_gdp()$colour_gdp
           ),
           #note can't put apostrophes in title
-          title = "This is a forecast. It shows the percentage change in the country GDP from 2018 to 2019.", 
+          title = value_current_gdp()$tooltip_gdp, 
           placement = "left", trigger = "hover"
         ) #tipify
       ) #div
@@ -88,7 +90,7 @@ server <- function(input, output, session) {
   value_debt_outstanding <- reactive(
     x = {
       current_debt <- select_country() %>% 
-        select(OutstandingDebtUSDollar2017)
+        select(OutstandingDebtUSDollar2017, colour_debt, icon_debt, tooltip_debt)
       return(current_debt)
     }
   )
@@ -99,10 +101,12 @@ server <- function(input, output, session) {
       tags$div(
         tipify(
           el = valueBox(
-            value = paste0("$", value_debt_outstanding(), "m"),
-            subtitle = "Latest Debt Outstanding", icon = icon(name = "certificate"), color = "red"
+            value = paste0("$", value_debt_outstanding()$OutstandingDebtUSDollar2017, "m"),
+            subtitle = "Latest Debt Outstanding", 
+            icon = icon(name = value_debt_outstanding()$icon_debt), 
+            color = value_debt_outstanding()$colour_debt
           ),
-          title = "This is the latest value we have on the country outstanding debt for 2017.",
+          title = value_debt_outstanding()$tooltip_debt,
           placement = "left", trigger = "hover"
         ) #tipify
       ) #div
