@@ -66,6 +66,9 @@ data_spread_debtleft <- data_externaldebtoutstanding %>%
          OutstandingDebtUSDollar2014 = `2014`,
          OutstandingDebtUSDollar2013 = `2013`)
 
+
+# Master Dataframe --------------------------------------------------------
+
 # join data together
 data_consolidate <- data_spread_gdp %>% 
   left_join(y = data_spread_tradebalance, by = "CountryCode") %>% 
@@ -73,4 +76,16 @@ data_consolidate <- data_spread_gdp %>%
   left_join(y = data_spread_exchangerate, by = "CountryCode") %>% 
   select(RegionalMember.x:TradeBalance2019, Currency:RateUSDollar2017) %>% 
   left_join(y = data_spread_debtleft, by = "CountryCode") %>% 
-  select(RegionalMember.x:RateUSDollar2017,OutstandingDebtUSDollar2017)
+  select(RegionalMember.x:RateUSDollar2017, OutstandingDebtUSDollar2013:OutstandingDebtUSDollar2017) %>% 
+  rename(RegionalMember = RegionalMember.x,
+         Subregion = Subregion.x)
+
+
+# Scaffold ----------------------------------------------------------------
+scaffold_country_details <- tibble(
+  `Country Details` = c("Country Code", "Country Name", "Subregion"),
+  `Info 1` = rep(x = NA, times = 3),
+  `Currency Details` = c("Currency Symbol", "Currency", ""),
+  `Info 2` = rep(x = NA, times = 3)
+)
+
