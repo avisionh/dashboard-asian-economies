@@ -141,7 +141,8 @@ server <- function(input, output, session) {
         colours_column = gdp_change$colour,
         plot_title = "GDP change per year in percent",
         plot_subtitle = input$name,
-        axis_y_title = "Percentage Change"
+        axis_y_title = "Percentage Change",
+        axis_y_suffix = "%"
       )
     }
     

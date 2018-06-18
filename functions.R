@@ -77,7 +77,7 @@ add_columns_debt <- function(x, column) {
 
 # Custom ggplot Function -----------------------------------------------------
 # DESC: Generic function to plot GDP Change, Trade Balance, Debt Outstanding
-custom_ggplot <- function(data, axis_x, axis_y, colours_column, plot_title, plot_subtitle, axis_y_title) {
+custom_ggplot <- function(data, axis_x, axis_y, colours_column, plot_title, plot_subtitle, axis_y_title, axis_y_prefix = "", axis_y_suffix = "") {
   ggplot(data = data, mapping = aes(x = axis_x, y = axis_y)) +
     geom_line(colour = "grey") +
     
@@ -89,7 +89,8 @@ custom_ggplot <- function(data, axis_x, axis_y, colours_column, plot_title, plot
     geom_hline(yintercept = 0, linetype = "dashed") +
     
     # include £ prefix
-    theme_classic() + scale_y_continuous(labels = dollar_format(prefix = "\U00a3")) +
+    theme_classic() + 
+    scale_y_continuous(labels = dollar_format(prefix = axis_y_prefix, suffix = axis_y_suffix)) +
     
     # force unique academic years
     scale_x_continuous(breaks = unique(axis_x)) +
