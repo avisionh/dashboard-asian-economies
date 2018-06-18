@@ -154,7 +154,8 @@ ui <- dashboardPage(
             width = 5,
             height = "32vh",
             tabPanel(title = "GDP Percentage Change", height = "100%", plotOutput(outputId = "plot_gdpchange", height = "26vh")),
-            tabPanel(title = "External Debt", height = "100%", plotOutput(outputId = "plot_debt", height = "26vh"))
+            tabPanel(title = "External Debt", height = "100%", plotOutput(outputId = "plot_debt", height = "26vh")),
+            tabPanel(title = "Trade Balance", height = "100%", plotOutput(outputId = "plot_tradebalance", height = "26vh"))
           )
         )
         

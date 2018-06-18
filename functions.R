@@ -81,7 +81,7 @@ custom_ggplot <- function(data, axis_x, axis_y, colours_column, plot_title, plot
   ggplot(data = data, mapping = aes(x = axis_x, y = axis_y)) +
     geom_line(colour = "grey") +
     
-    #add custom colouring on negative and positive values
+    # add custom colouring on negative and positive values
     geom_point(mapping = aes(colour = colours_column), size = 3) +
     scale_colour_manual(values = c("#0072B2", "#D55E00")) +
     

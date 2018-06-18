@@ -164,10 +164,31 @@ server <- function(input, output, session) {
         plot_title = "External Debt Outstanding",
         plot_subtitle = input$name,
         axis_y_title = "Value of outstanding external debt",
-        axis_y_prefix = "$", axis_y_suffix = "m"
+        axis_y_prefix = "US$", axis_y_suffix = "m"
       )
     }
     
+  )
+  
+  output$plot_tradebalance <- renderPlot(
+    
+    expr = {
+      
+      # filter dataframe for trade balance
+      trade_balance <- select_country_plots() %>% 
+        filter(key == "TradeBalanceInUSDollarMillion")
+      
+      custom_ggplot(
+        data = trade_balance,
+        axis_x = trade_balance$Year,
+        axis_y = trade_balance$value,
+        colours_column = trade_balance$colour,
+        plot_title = "Trade Balance",
+        plot_subtitle = input$name,
+        axis_y_title = "Value of trade balance",
+        axis_y_prefix = "US$", axis_y_suffix = "m"
+      )
+    }
   )
     
 }
