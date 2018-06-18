@@ -139,15 +139,35 @@ server <- function(input, output, session) {
         axis_x = gdp_change$Year,
         axis_y = gdp_change$value,
         colours_column = gdp_change$colour,
-        plot_title = "GDP change per year in percent",
+        plot_title = "GDP Change per Year",
         plot_subtitle = input$name,
-        axis_y_title = "Percentage Change",
+        axis_y_title = "GDP Percentage Change",
         axis_y_suffix = "%"
       )
     }
     
   )
   
-  
+  output$plot_debt <- renderPlot(
+    
+    expr = {
+      
+      # filter dataframe for external debt outstanding
+      debt_outstanding <- select_country_plots() %>% 
+        filter(key == "DebtOutstandingUSDollarMillion")
+      
+      custom_ggplot(
+        data = debt_outstanding,
+        axis_x = debt_outstanding$Year,
+        axis_y = debt_outstanding$value,
+        colours_column = debt_outstanding$colour,
+        plot_title = "External Debt Outstanding",
+        plot_subtitle = input$name,
+        axis_y_title = "Value of outstanding external debt",
+        axis_y_prefix = "$", axis_y_suffix = "m"
+      )
+    }
+    
+  )
     
 }
