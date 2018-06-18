@@ -11,7 +11,7 @@ server <- function(input, output, session) {
  
 # --- Country Report --- #
 
-  # Reactive: Selected Country ----------------------------------------------
+  # Reactive: Selected Country on data_consolidate ----------------------------------------------
   # create reactive function to store the user's selected country to reuse later
   select_country <- reactive(
     x = {
@@ -19,6 +19,17 @@ server <- function(input, output, session) {
       filter(RegionalMember == input$name)
     
     return(data_select_country)
+    }
+  )
+  
+
+  # Reactive: Selected Country on data_gdp ----------------------------------
+  # Create reactive function to store the user's selected country to reuse for plots
+  select_country_plots <- reactive(
+    x = {
+      select_country_plots <- data_plots %>% 
+        filter(RegionalMember == input$name)
+      return(select_country_plots)
     }
   )
   
@@ -113,6 +124,28 @@ server <- function(input, output, session) {
     }
   ) #renderValueBox
 
+
+  # Plot: GDP Change --------------------------------------------------------
+  output$plot_gdpchange <- renderPlot(
+    
+    expr = {
+      
+      # filter dataframe for gdp
+      gdp_change <- select_country_plots() %>% 
+        filter(key == "GDPGrowthperYearPercent")
+      
+      custom_ggplot(
+        data = gdp_change,
+        axis_x = gdp_change$Year,
+        axis_y = gdp_change$value,
+        colours_column = gdp_change$colour,
+        plot_title = "GDP change per year in percent",
+        plot_subtitle = input$name,
+        axis_y_title = "Percentage Change"
+      )
+    }
+    
+  )
   
   
     
