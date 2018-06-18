@@ -30,13 +30,19 @@ ui <- dashboardPage(
         tabName = "info_guidance"
       ),
       
+      # Subregion Report tab
+      menuItem(
+        text = "Subregion Report",
+        icon = icon(name = "list-ul"),
+        tabName = "report_subregion"
+      ),
+      
       # Country Report tab
       menuItem(
         text = "Country Report",
         icon = icon(name = "window-maximize"),
         tabName = "report_country"
       )
-               
                
     ) #sideMenu
   ), #dashboardSidebar  
@@ -159,8 +165,17 @@ ui <- dashboardPage(
           )
         )
         
-      ) #tabItem
+      ), #tabItem
       
+      tabItem(
+        tabName = "report_subregion",
+        selectInput(
+          inputId = "subregion",
+          label = "Please choose a subregion:",
+          choices = sort(unique(data_plots_region$Subregion))
+        )
+      )   
+    
     ) #tabItems
   
   ) #dashboardBody

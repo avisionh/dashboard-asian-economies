@@ -119,3 +119,13 @@ scaffold_country_details <- tibble(
   `Info 2` = rep(x = NA, times = 3)
 )
 
+
+
+# Subregion: Plot Dataframe ---------------------------------------------
+data_plots_region <- data_plots %>% 
+  select(-c(RegionalMember, colour)) %>% 
+  group_by(Subregion, key) %>% 
+  summarise(mean_value = mean(value, na.rm = TRUE))
+
+rm(data_exchangerate, data_externaldebtoutstanding, data_gdp, data_tradebalance,
+   data_spread_debtleft, data_spread_exchangerate, data_spread_gdp, data_spread_tradebalance)
