@@ -173,8 +173,17 @@ ui <- dashboardPage(
           inputId = "subregion",
           label = "Please choose a subregion:",
           choices = sort(unique(data_plots_region$Subregion))
+        ),
+        
+        fluidRow(
+          # Text: Country in subregion
+          box(
+            title = "Countries in Subregion",  solidHeader = TRUE, status = "danger", width = 7,
+            textOutput(outputId = "text_subregion_countries")
+          )
         )
-      )   
+      )
+    
     
     ) #tabItems
   

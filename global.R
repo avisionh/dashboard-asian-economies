@@ -82,13 +82,17 @@ data_consolidate <- data_spread_gdp %>%
   select(RegionalMember.x:TradeBalance2019, Currency:RateUSDollar2017) %>% 
   left_join(y = data_spread_debtleft, by = "CountryCode") %>% 
   select(RegionalMember.x:RateUSDollar2017, OutstandingDebtUSDollar2013:OutstandingDebtUSDollar2017) %>% 
-  rename(RegionalMember = RegionalMember.x,
-         Subregion = Subregion.x)
+  rename(RegionalMember = RegionalMember.x, Subregion = Subregion.x)
+
+# Create string of all subregions
+subregions <- unique(x = data_tradebalance$Subregion)
 
 # create valueBox and infoBox information
 data_consolidate <- data_consolidate %>% 
   add_columns_gdp(column = data_consolidate$GDPRate201819) %>% 
-  add_columns_debt(column = data_consolidate$OutstandingDebtUSDollar2017)
+  add_columns_debt(column = data_consolidate$OutstandingDebtUSDollar2017) %>% 
+  # remove subregions in RegionalEconomy field
+  filter(RegionalMember %!in% subregions & RegionalMember != "Developing Asia excluding the Newly Industrialized Economies")
 
 
 # Plot Dataframe ----------------------------------------------------------
@@ -107,8 +111,11 @@ data_externaldebtoutstanding <- data_externaldebtoutstanding %>%
 data_plots <- data_gdp %>% 
   rbind(x = data_externaldebtoutstanding) %>% 
   rbind(x = data_tradebalance) %>% 
-  # Add TRUE FALSE so can get red and blue colours if below or above zero
-  mutate(colour = ifelse(value < 0, TRUE, FALSE))
+  # add TRUE FALSE so can get red and blue colours if below or above zero
+  mutate(colour = ifelse(value < 0, TRUE, FALSE)) %>% 
+  # remove 'Developing Asia excluding NIE
+  filter(Subregion %!in% c("Developing Asia", "Developing Asia excluding NIEs"))
+
 
 
 # Scaffold ----------------------------------------------------------------
@@ -120,6 +127,9 @@ scaffold_country_details <- tibble(
 )
 
 
+# Lookup: Countries to Subregions -----------------------------------------
+lookup_subregion_country <- data_consolidate %>% 
+  select(RegionalMember, Subregion)
 
 # Subregion: Plot Dataframe ---------------------------------------------
 data_plots_region <- data_plots %>% 

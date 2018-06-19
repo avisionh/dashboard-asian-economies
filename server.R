@@ -15,21 +15,31 @@ server <- function(input, output, session) {
   # create reactive function to store the user's selected country to reuse later
   select_country <- reactive(
     x = {
-    data_select_country <- data_consolidate %>% 
-      filter(RegionalMember == input$name)
-    
+      data_select_country <- data_consolidate %>% 
+        filter(RegionalMember == input$name)
     return(data_select_country)
     }
   )
   
 
-  # Reactive: Selected Country on data_gdp ----------------------------------
+  # Reactive: Selected Country on data_plots ----------------------------------
   # Create reactive function to store the user's selected country to reuse for plots
   select_country_plots <- reactive(
     x = {
       select_country_plots <- data_plots %>% 
         filter(RegionalMember == input$name)
       return(select_country_plots)
+    }
+  )
+  
+
+  # Reactive: Selected Subregion on data_plots_region -----------------------
+  # Create reactive function to store the user's selected country to reuse for report
+  select_subregion_plots <- reactive(
+    x = {
+      select_subregion_plots <- data_plots_region %>% 
+        filter(Subregion == input$subregion)
+      return(select_subregion_plots)
     }
   )
   
@@ -192,5 +202,21 @@ server <- function(input, output, session) {
   )
    
 # --- Subregion Report --- #   
+
+  # Text: Subregion countries -----------------------------------------------
+  # 1. Get list of countries in subregion
+  select_subregion_country <- reactive(
+    x = {
+      temp <- lookup_subregion_country %>% 
+        filter(Subregion == input$subregion)
+      return(temp)
+    }
+  )
   
+  # 2. Create text of countries
+  output$text_subregion_countries <- renderText(
+    expr = {
+      select_subregion_country()$RegionalMember
+    }
+  )
 }

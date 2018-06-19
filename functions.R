@@ -4,6 +4,12 @@
 # DESC: The functions.R script houses functions for the app.
 
 
+# Not In Operator ---------------------------------------------------------
+# DESC: Create the opposite of the '%in%' operator
+'%!in%' <- function(x, y){
+  !('%in%'(x, y))
+}
+
 # Row Bind Transformation -------------------------------------------------
 # Need to use lazy evaluation
 transform_for_row_bind <- function(x, key_name, col_name) {
