@@ -217,6 +217,7 @@ server <- function(input, output, session) {
   output$table_subregion_countries <- renderTable(
     expr = {
       select_subregion_country()$RegionalMember
-    }
+    },
+    colnames = FALSE
   )
 }
