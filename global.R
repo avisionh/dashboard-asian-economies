@@ -117,7 +117,6 @@ data_plots <- data_gdp %>%
   filter(Subregion %!in% c("Developing Asia", "Developing Asia excluding NIEs"))
 
 
-
 # Scaffold ----------------------------------------------------------------
 scaffold_country_details <- tibble(
   `Country Details` = c("Country Code", "Country Name", "Subregion"),

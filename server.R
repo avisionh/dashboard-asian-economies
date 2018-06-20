@@ -214,7 +214,7 @@ server <- function(input, output, session) {
   )
   
   # 2. Create text of countries
-  output$text_subregion_countries <- renderText(
+  output$table_subregion_countries <- renderTable(
     expr = {
       select_subregion_country()$RegionalMember
     }

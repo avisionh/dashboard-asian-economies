@@ -179,7 +179,7 @@ ui <- dashboardPage(
           # Text: Country in subregion
           box(
             title = "Countries in Subregion",  solidHeader = TRUE, status = "danger", width = 7,
-            textOutput(outputId = "text_subregion_countries")
+            tableOutput(outputId = "table_subregion_countries")
           )
         )
       )
