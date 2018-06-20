@@ -220,4 +220,35 @@ server <- function(input, output, session) {
     },
     colnames = FALSE
   )
+  
+
+  # InfoBox: Subregion Average GDP Growth  ----------------------------------
+  # 1. Extract average GDP Change
+  value_region_avg_gdp <- reactive(
+    x = {
+      avg_gdp <- select_subregion_plots() %>%
+        filter(key == "GDPGrowthperYearPercent")
+
+      return(avg_gdp)  
+    }
+  )
+  
+  # 2. Create output valueBox
+  output$valuebox_region_avg_gdp <- renderValueBox(
+    expr = {
+      tags$div(
+        tipify(
+          el = valueBox(
+            value = paste0(value_region_avg_gdp()$mean_value, "%"),
+            subtitle = "Average GDP Growth", 
+            icon = icon(name = "certificate"), 
+            color = "navy"
+          ),
+          title = "This is the average GDP growth rate of the region from 2013 to 2019 (where 2019 is a forecasted figure)",
+          placement = "left", trigger = "hover"
+        ) #tipify
+      ) #div
+    }
+  ) #renderValueBox
+  
 }

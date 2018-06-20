@@ -135,6 +135,7 @@ data_plots_region <- data_plots %>%
   select(-c(RegionalMember, colour)) %>% 
   group_by(Subregion, key) %>% 
   summarise(mean_value = mean(value, na.rm = TRUE))
+data_plots_region$mean_value <- round(x = data_plots_region$mean_value, digits = 2)
 
 rm(data_exchangerate, data_externaldebtoutstanding, data_gdp, data_tradebalance,
    data_spread_debtleft, data_spread_exchangerate, data_spread_gdp, data_spread_tradebalance)

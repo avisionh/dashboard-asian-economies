@@ -180,7 +180,11 @@ ui <- dashboardPage(
           box(
             title = "Countries in Subregion",  solidHeader = TRUE, status = "danger", width = 3,
             tableOutput(outputId = "table_subregion_countries")
-          )
+          ) #box
+        ), #fluidRow
+        
+        fluidRow(
+          valueBoxOutput(outputId = "valuebox_region_avg_gdp", width = NULL)
         )
       )
     
