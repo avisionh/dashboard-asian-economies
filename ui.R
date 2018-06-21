@@ -141,16 +141,9 @@ ui <- dashboardPage(
 
           # Table: Country Details --------------------------------------------------
           box(
-            title = tags$b("Country Overview"), solidHeader = TRUE, status = "danger", width = 7,
+            title = tags$b("Country Overview"), solidHeader = TRUE, status = "danger", width = 7, height = "25vh",
             dataTableOutput(outputId = "table_country_details", width = "100%")
-          ), #box
-          
-          column(
-            width = 5,
-            valueBoxOutput(outputId = "valuebox_current_gdp", width = NULL),
-            valueBoxOutput(outputId = "valuebox_current_debt", width = NULL),
-            valueBoxOutput(outputId = "valuebox_current_trade", width = NULL)
-          ) #column
+          ) #box
           
         ), #fluidRow
         
@@ -163,8 +156,22 @@ ui <- dashboardPage(
             tabPanel(title = "GDP Percentage Change", height = "100%", plotOutput(outputId = "plot_gdpchange", height = "26vh")),
             tabPanel(title = "External Debt", height = "100%", plotOutput(outputId = "plot_debt", height = "26vh")),
             tabPanel(title = "Trade Balance", height = "100%", plotOutput(outputId = "plot_tradebalance", height = "26vh"))
-          )
-        )
+          ),
+          
+          column(
+            width = 5,
+            valueBoxOutput(outputId = "valuebox_current_gdp", width = NULL)
+          ), #column
+          column(
+            width = 5,
+            valueBoxOutput(outputId = "valuebox_current_debt", width = NULL)
+          ), #colmun
+          column(
+            width = 5,
+            valueBoxOutput(outputId = "valuebox_current_trade", width = NULL)
+          ) #column
+          
+        ) #fluidRow
         
       ), #tabItem
       
