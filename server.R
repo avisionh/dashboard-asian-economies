@@ -158,6 +158,8 @@ server <- function(input, output, session) {
     
   )
   
+
+  # Plot: External Debt Outstanding -----------------------------------------
   output$plot_debt <- renderPlot(
     
     expr = {
@@ -180,6 +182,8 @@ server <- function(input, output, session) {
     
   )
   
+
+  # Plot: Trade Balance -----------------------------------------------------
   output$plot_tradebalance <- renderPlot(
     
     expr = {
@@ -209,7 +213,7 @@ server <- function(input, output, session) {
     expr = {
       datatable(
         data = data_consolidate %>% 
-          #filter(Subregion == input$subregion) %>% # uncommenting this gives us subset of countries in region but drill-through fails
+          filter(Subregion == input$subregion) %>%
           select(RegionalMember),
         rownames = FALSE,
         options = list(lengthChange = FALSE, scrollY = "30vh", searching = FALSE, info = FALSE, paging = FALSE, ordering = FALSE)
@@ -312,7 +316,14 @@ server <- function(input, output, session) {
     
     handlerExpr = {
       # user-selected variable
-      name_country <- as.character(data_consolidate[input$table_subregion_countries_rows_selected, 1])
+      
+      # 1. User selects subregion in report_subregion which reduces data_consolidate rows, table_subregion_countries
+      # 2. User selecting country here wants this country to change on report_country
+      # 3. temp[input$table_subregion_countries_rows_selected, 1] in name_country returns row number
+      #     hence need to filter data_consolidate, temp, before creating name_country
+      #     to obtain user-selected country from report_subregion
+      temp <- data_consolidate %>% filter(Subregion == input$subregion)
+      name_country <- as.character(temp[input$table_subregion_countries_rows_selected, 1])
       
       updateTabItems(session, inputId = "menu", selected = "report_country")
       updateSelectInput(session, inputId = "name", selected = name_country)
