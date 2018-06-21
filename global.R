@@ -126,10 +126,6 @@ scaffold_country_details <- tibble(
 )
 
 
-# Lookup: Countries to Subregions -----------------------------------------
-lookup_subregion_country <- data_consolidate %>% 
-  select(RegionalMember, Subregion)
-
 # Subregion: Plot Dataframe ---------------------------------------------
 data_plots_region <- data_plots %>% 
   select(-c(RegionalMember, colour)) %>% 

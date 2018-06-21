@@ -204,22 +204,18 @@ server <- function(input, output, session) {
 # --- Subregion Report --- #   
 
   # Text: Subregion countries -----------------------------------------------
-  # 1. Get list of countries in subregion
-  select_subregion_country <- reactive(
-    x = {
-      temp <- lookup_subregion_country %>% 
-        filter(Subregion == input$subregion)
-      return(temp)
-    }
-  )
-  
-  # 2. Create text of countries
-  output$table_subregion_countries <- renderTable(
+  # Create table of countries in subregion
+  output$table_subregion_countries <- renderDataTable(
     expr = {
-      select_subregion_country()$RegionalMember
-    },
-    colnames = FALSE
-  )
+      datatable(
+        data = data_consolidate %>% 
+          #filter(Subregion == input$subregion) %>% # uncommenting this gives us subset of countries in region but drill-through fails
+          select(RegionalMember),
+        rownames = FALSE,
+        options = list(lengthChange = FALSE, scrollY = "30vh", searching = FALSE, info = FALSE, paging = FALSE, ordering = FALSE)
+      ) #datatable
+    }
+  ) #renderDataTable
   
 
   # InfoBox: Subregion Average GDP Growth  ----------------------------------
@@ -307,5 +303,22 @@ server <- function(input, output, session) {
       ) #div
     }
   ) #renderValueBox
+  
+  # Observer - Drill-through from Subregion to Country Report -------------------------------
+  
+  observeEvent(
+    
+    eventExpr = {input$table_subregion_countries_rows_selected},
+    
+    handlerExpr = {
+      # user-selected variable
+      name_country <- as.character(data_consolidate[input$table_subregion_countries_rows_selected, 1])
+      
+      updateTabItems(session, inputId = "menu", selected = "report_country")
+      updateSelectInput(session, inputId = "name", selected = name_country)
+      dataTableProxy(outputId = "table_subregion_countries") %>% 
+        selectRows(selected = list())
+    }
+  )
   
 }
