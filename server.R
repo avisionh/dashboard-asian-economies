@@ -122,7 +122,7 @@ server <- function(input, output, session) {
       tags$div(
         tipify(
           el = valueBox(
-            value = paste0("$", value_debt_outstanding()$OutstandingDebtUSDollar2017, "m"),
+            value = paste0(dollar(value_debt_outstanding()$OutstandingDebtUSDollar2017), "m"),
             subtitle = "Latest Debt Outstanding", 
             icon = icon(name = value_debt_outstanding()$icon_debt), 
             color = value_debt_outstanding()$colour_debt
@@ -267,7 +267,7 @@ server <- function(input, output, session) {
       tags$div(
         tipify(
           el = valueBox(
-            value = paste0("$", value_region_debt()$mean_value, "m"),
+            value = paste0(dollar(value_region_debt()$mean_value), "m"),
             subtitle = "Average External Debt", 
             icon = icon(name = "hand-holding-usd"), 
             color = "orange"
@@ -296,7 +296,7 @@ server <- function(input, output, session) {
       tags$div(
         tipify(
           el = valueBox(
-            value = paste0("$", value_region_trade_balance()$mean_value, "m"),
+            value = paste0(dollar(value_region_trade_balance()$mean_value), "m"),
             subtitle = "Average Trade Balance", 
             icon = icon(name = "handshake"), 
             color = "aqua"
