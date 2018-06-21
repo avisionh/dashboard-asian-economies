@@ -228,7 +228,6 @@ server <- function(input, output, session) {
     x = {
       avg_gdp <- select_subregion_plots() %>%
         filter(key == "GDPGrowthperYearPercent")
-
       return(avg_gdp)  
     }
   )
@@ -241,10 +240,68 @@ server <- function(input, output, session) {
           el = valueBox(
             value = paste0(value_region_avg_gdp()$mean_value, "%"),
             subtitle = "Average GDP Growth", 
-            icon = icon(name = "certificate"), 
-            color = "navy"
+            icon = icon(name = "piggy-bank", lib = "glyphicon"), 
+            color = "maroon"
           ),
           title = "This is the average GDP growth rate of the region from 2013 to 2019 (where 2019 is a forecasted figure)",
+          placement = "left", trigger = "hover"
+        ) #tipify
+      ) #div
+    }
+  ) #renderValueBox
+  
+  
+  # InfoBox: Subregion Average Debt Outstanding  ----------------------------------
+  # 1. Extract average GDP Change
+  value_region_debt <- reactive(
+    x = {
+      avg_debt <- select_subregion_plots() %>%
+        filter(key == "DebtOutstandingUSDollarMillion")
+      return(avg_debt)  
+    }
+  )
+  
+  # 2. Create output valueBox
+  output$valuebox_region_debt <- renderValueBox(
+    expr = {
+      tags$div(
+        tipify(
+          el = valueBox(
+            value = paste0("$", value_region_debt()$mean_value, "m"),
+            subtitle = "Average External Debt", 
+            icon = icon(name = "hand-holding-usd"), 
+            color = "orange"
+          ),
+          title = "This is the average external debt outstanding for the region from 2013 to 2017",
+          placement = "left", trigger = "hover"
+        ) #tipify
+      ) #div
+    }
+  ) #renderValueBox
+  
+  
+  # InfoBox: Subregion Average Trade Balance  ----------------------------------
+  # 1. Extract average GDP Change
+  value_region_trade_balance <- reactive(
+    x = {
+      avg_trade_balance <- select_subregion_plots() %>%
+        filter(key == "TradeBalanceInUSDollarMillion")
+      return(avg_trade_balance)  
+    }
+  )
+  
+  # 2. Create output valueBox
+  output$valuebox_region_trade_balance <- renderValueBox(
+    expr = {
+      tags$div(
+        tipify(
+          el = valueBox(
+            value = paste0("$", value_region_trade_balance()$mean_value, "m"),
+            subtitle = "Average Trade Balance", 
+            icon = icon(name = "handshake"), 
+            color = "aqua"
+          ),
+          title = "This is the average trade balance for the region from 2013 to 2019 (where 2019 is a forecasted figure)",
           placement = "left", trigger = "hover"
         ) #tipify
       ) #div

@@ -184,7 +184,9 @@ ui <- dashboardPage(
         ), #fluidRow
         
         fluidRow(
-          valueBoxOutput(outputId = "valuebox_region_avg_gdp", width = NULL)
+          valueBoxOutput(outputId = "valuebox_region_avg_gdp", width = NULL),
+          valueBoxOutput(outputId = "valuebox_region_debt", width = NULL),
+          valueBoxOutput(outputId = "valuebox_region_trade_balance", width = NULL)
         )
       )
     
