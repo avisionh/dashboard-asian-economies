@@ -62,9 +62,9 @@ add_columns_debt <- function(x, column) {
         TRUE           ~ "light-blue"
       ),
       icon_debt = case_when(
-        column < 0     ~ "exclamation-triangle",
+        column < 0     ~ "certificate",
         column == 0    ~ "exclamation-circle",
-        column > 0     ~ "certificate",
+        column > 0     ~ "exclamation-triangle",
         TRUE           ~ "question-circle"
       ),
       tooltip_debt = case_when(
