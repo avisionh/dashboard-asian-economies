@@ -159,15 +159,15 @@ ui <- dashboardPage(
           ),
           
           column(
-            width = 5,
+            width = 6,
             valueBoxOutput(outputId = "valuebox_current_gdp", width = NULL)
           ), #column
           column(
-            width = 5,
+            width = 6,
             valueBoxOutput(outputId = "valuebox_current_debt", width = NULL)
           ), #colmun
           column(
-            width = 5,
+            width = 6,
             valueBoxOutput(outputId = "valuebox_current_trade", width = NULL)
           ) #column
           
