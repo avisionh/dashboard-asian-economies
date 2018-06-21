@@ -133,6 +133,35 @@ server <- function(input, output, session) {
       ) #div
     }
   ) #renderValueBox
+  
+  
+  # InfoBox: Current Trade Balance ---------------------------------------
+  # 1. Extract latest debt outstanding value
+  value_trade_balance <- reactive(
+    x = {
+      current_trade <- select_country() %>% 
+        select(TradeBalance2019, colour_trade, icon_trade, tooltip_trade)
+      return(current_trade)
+    }
+  )
+  
+  # 2. Create output valueBox
+  output$valuebox_current_trade <- renderValueBox(
+    expr = {
+      tags$div(
+        tipify(
+          el = valueBox(
+            value = paste0(dollar(value_trade_balance()$TradeBalance2019), "m"),
+            subtitle = "Trade Balance 2019", 
+            icon = icon(name = value_trade_balance()$icon_trade), 
+            color = value_trade_balance()$colour_trade
+          ),
+          title = value_trade_balance()$tooltip_trade,
+          placement = "left", trigger = "hover"
+        ) #tipify
+      ) #div
+    }
+  ) #renderValueBox
 
 
   # Plot: GDP Change --------------------------------------------------------

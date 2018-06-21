@@ -91,6 +91,7 @@ subregions <- unique(x = data_tradebalance$Subregion)
 data_consolidate <- data_consolidate %>% 
   add_columns_gdp(column = data_consolidate$GDPRate201819) %>% 
   add_columns_debt(column = data_consolidate$OutstandingDebtUSDollar2017) %>% 
+  add_columns_trade(column = data_consolidate$TradeBalance2019) %>% 
   # remove subregions in RegionalEconomy field
   filter(RegionalMember %!in% subregions & RegionalMember != "Developing Asia excluding the Newly Industrialized Economies")
 
