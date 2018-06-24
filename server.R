@@ -267,7 +267,7 @@ server <- function(input, output, session) {
         extensions = "Buttons",
         
         options = list(
-          pageLength = 10, scrollX = TRUE, order = list(1, "asc"),
+          pageLength = 10, scrollX = TRUE, order = list(0, "asc"),
           
           # fix row height
           lengthChange = FALSE, scrollY = "39vh",
