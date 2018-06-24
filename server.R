@@ -251,7 +251,7 @@ server <- function(input, output, session) {
       datatable(
         
         data = select_country_stats() %>% 
-          select(RegionalEconomy, Statistic, Year, Value, UnitOfMeasurement, SustainableDevelopmentGoal) %>% 
+          select(Statistic, Year, Value, UnitOfMeasurement, SustainableDevelopmentGoal) %>% 
           rename(
             `Unit of Measurement` = UnitOfMeasurement,
             `Sustainable Development Goal` = SustainableDevelopmentGoal
@@ -286,7 +286,19 @@ server <- function(input, output, session) {
             "function(settings, json) {",
             "$(this.api().table().header()).css({'background-color': '#000', 'color': '#fff'});",
             "}"
-          )
+          ),
+          
+          # show only first 20 characters of Name
+          columnDefs = list(
+            list(
+              targets = 0, render = JS(
+                "function(data, type, row, meta) {",
+                "return type === 'display' && data.length > 20 ?",
+                "'<span title=\"' + data + '\">' + data.substr(0, 20) + '...</span>' : data;",
+                "}"
+              ) #JS
+            ) #list
+          ) #list
         ) #list
       ) %>%
       
