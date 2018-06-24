@@ -103,7 +103,7 @@ server <- function(input, output, session) {
         tipify(
           el = valueBox(
             value = paste0(value_current_gdp()$GDPRate201819, "%"),
-            subtitle = "Forecasted 2018-19 GDP Rate", 
+            subtitle = "Lastest GDP Rate Forecast", 
             icon = icon(name = value_current_gdp()$icon_gdp), 
             color = value_current_gdp()$colour_gdp
           ),
@@ -162,7 +162,7 @@ server <- function(input, output, session) {
         tipify(
           el = valueBox(
             value = paste0(dollar(value_trade_balance()$TradeBalance2019), "m"),
-            subtitle = "Trade Balance 2019", 
+            subtitle = "Latest Trade Balance Forecast", 
             icon = icon(name = value_trade_balance()$icon_trade), 
             color = value_trade_balance()$colour_trade
           ),
