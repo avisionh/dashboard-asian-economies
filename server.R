@@ -257,7 +257,7 @@ server <- function(input, output, session) {
             `Sustainable Development Goal` = SustainableDevelopmentGoal
           ),
         
-        # add strips to left and right of cells
+        # add strips to left and right of cells and set width
         class = "cell-border stripe",
         
         # add filter boxes to each column and turn off rownames
@@ -267,10 +267,10 @@ server <- function(input, output, session) {
         extensions = "Buttons",
         
         options = list(
-          pageLength = 15, scrollX = TRUE, order = list(1, "asc"),
+          pageLength = 10, scrollX = TRUE, order = list(1, "asc"),
           
           # fix row height
-          lengthChange = FALSE, scrollY = "50vh",
+          lengthChange = FALSE, scrollY = "39vh",
           
           # only show table and pagination/page no.s at bottom
           info = FALSE,

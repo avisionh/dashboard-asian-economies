@@ -174,6 +174,7 @@ data_basicstats <- data_basicstats %>%
   filter(Statistic %in% vec_basicstats_fields) %>% 
   mutate(
     Statistic = as.factor(Statistic),
+    Value = as.double(Value),
     Year = as.factor(Year),
     SustainableDevelopmentGoal = as.factor(SustainableDevelopmentGoal)
   )
@@ -186,4 +187,5 @@ data_plots_region <- data_plots %>%
 data_plots_region$mean_value <- round(x = data_plots_region$mean_value, digits = 2)
 
 rm(data_exchangerate, data_externaldebtoutstanding, data_gdp, data_tradebalance,
-   data_spread_debtleft, data_spread_exchangerate, data_spread_gdp, data_spread_tradebalance)
+   data_spread_debtleft, data_spread_exchangerate, data_spread_gdp, data_spread_tradebalance,
+   vec_basicstats_fields, vec_remove_basicstats_fields)

@@ -149,29 +149,28 @@ ui <- dashboardPage(
         
         fluidRow(
           
-          # Plots
-          tabBox(
-            width = 5,
-            height = "32vh",
-            tabPanel(title = "GDP Percentage Change", height = "100%", plotOutput(outputId = "plot_gdpchange", height = "26vh")),
-            tabPanel(title = "External Debt", height = "100%", plotOutput(outputId = "plot_debt", height = "26vh")),
-            tabPanel(title = "Trade Balance", height = "100%", plotOutput(outputId = "plot_tradebalance", height = "26vh"))
+          # Basic Stats
+          box(
+            status = "danger", width = 6,
+            dataTableOutput(outputId = "table_basic_stats")
           ),
           
           column(
             width = 6,
-            valueBoxOutput(outputId = "valuebox_current_gdp", width = NULL)
-          ), #column
-          column(
-            width = 6,
-            valueBoxOutput(outputId = "valuebox_current_debt", width = NULL)
-          ), #colmun
-          column(
-            width = 6,
+            valueBoxOutput(outputId = "valuebox_current_gdp", width = NULL),
+            valueBoxOutput(outputId = "valuebox_current_debt", width = NULL),
             valueBoxOutput(outputId = "valuebox_current_trade", width = NULL)
-          ), #column
+          ),
           
-          dataTableOutput(outputId = "table_basic_stats")
+          # Plots
+          tabBox(
+            width = 6,
+            height = "47vh",
+            tabPanel(title = "GDP Percentage Change", height = "100%", plotOutput(outputId = "plot_gdpchange", height = "40vh")),
+            tabPanel(title = "External Debt", height = "100%", plotOutput(outputId = "plot_debt", height = "40vh")),
+            tabPanel(title = "Trade Balance", height = "100%", plotOutput(outputId = "plot_tradebalance", height = "40vh"))
+          )
+          
         ) #fluidRow
         
       ), #tabItem
