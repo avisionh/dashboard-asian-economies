@@ -169,8 +169,9 @@ ui <- dashboardPage(
           column(
             width = 6,
             valueBoxOutput(outputId = "valuebox_current_trade", width = NULL)
-          ) #column
+          ), #column
           
+          dataTableOutput(outputId = "table_basic_stats")
         ) #fluidRow
         
       ), #tabItem

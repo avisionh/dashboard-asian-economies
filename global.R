@@ -85,7 +85,7 @@ data_consolidate <- data_spread_gdp %>%
   rename(RegionalMember = RegionalMember.x, Subregion = Subregion.x)
 
 # Create string of all subregions
-subregions <- unique(x = data_tradebalance$Subregion)
+vec_subregions <- unique(x = data_tradebalance$Subregion)
 
 # create valueBox and infoBox information
 data_consolidate <- data_consolidate %>% 
@@ -93,7 +93,7 @@ data_consolidate <- data_consolidate %>%
   add_columns_debt(column = data_consolidate$OutstandingDebtUSDollar2017) %>% 
   add_columns_trade(column = data_consolidate$TradeBalance2019) %>% 
   # remove subregions in RegionalEconomy field
-  filter(RegionalMember %!in% subregions & RegionalMember != "Developing Asia excluding the Newly Industrialized Economies")
+  filter(RegionalMember %!in% vec_subregions & RegionalMember != "Developing Asia excluding the Newly Industrialized Economies")
 
 
 # Plot Dataframe ----------------------------------------------------------
@@ -126,6 +126,57 @@ scaffold_country_details <- tibble(
   `Info 2` = rep(x = NA, times = 3)
 )
 
+
+# Table: Basic Stats ------------------------------------------------------
+# remove fields not of interest
+vec_basicstats_fields <- unique(x = data_basicstats$Statistic)
+vec_remove_basicstats_fields <- c(
+  "Material Footprint, Million Metric Tons",
+  "Domestic Material Consumption, Million Metric Tons",
+  "Coverage of Protected Areas in Relation to Marine Areas",                                                                                   
+  "Forest Area as a Proportion of Total Land Area",                                                                                            
+  "Proportion of Children under 5 Years of Age Whose Births Have Been Registered with a Civil Authority",
+  "Neonatal Mortality Rate",                                                                                                                   
+  "Tuberculosis Incidence",                                                                                                                    
+  "Mortality Rate Attributed to Cardiovascular Disease, Cancer, Diabetes, or Chronic Respiratory Disease",                                     
+  "Participation Rate in Organized Learning (1 year before the official primary entry age), Female",                                           
+  "Participation Rate in Organized Learning (1 year before the official primary entry age), Male",                                             
+  "Participation Rate in Organized Learning (1 year before the official primary entry age), Total",                                            
+  "Proportion of Teachers Who Have Received at Least the Minimum Organized Teacher Training, Lower Secondary",                                 
+  "Proportion of Teachers Who Have Received at Least the Minimum Organized Teacher Training, Preprimary",                                      
+  "Proportion of Teachers Who Have Received at Least the Minimum Organized Teacher Training, Primary",                                         
+  "Proportion of Teachers Who Have Received at Least the Minimum Organized Teacher Training, Upper Secondary",                                 
+  "Proportion of Seats Held by Women in National Parliaments",                                                                                 
+  "Proportion of Population Using Safely Managed Drinking Water Services, Rural",                                                              
+  "Proportion of Population Using Safely Managed Drinking Water Services, Total",                                                              
+  "Proportion of Population Using Safely Managed Drinking Water Services, Urban",
+  "Number of ATMs",                                                                                                                            
+  "Number of Commercial Bank Branches",
+  "Annual Growth Rate of Real GDP per Employed Person",
+  "Total Official Flows for Infrastructure, Official Development Assistance (ODA)",                                                            
+  "Total Official Flows for Infrastructure, Other Official Flows (OOF)",                                                                       
+  "Proportion of Population Covered by Mobile Network, 2G",
+  "Age Dependency Ratio",
+  "Annual Growth Rate of Gross Domestic Product (GDP)",                                                                                        
+  "Annual Real Growth Rates on Value Added, Agriculture",                                                                                      
+  "Annual Real Growth Rates on Value Added, Industry",                                                                                         
+  "Annual Real Growth Rates on Value Added, Services",                                                                                         
+  "Average Annual Population Growth Rate",
+  "External Debt, Total Outstanding",
+  "Per Capita Gross National Income (GNI), Atlas Method",
+  "Trade Balance",                                                                                                                             
+  NA
+  )
+vec_basicstats_fields <- vec_basicstats_fields[-which(vec_basicstats_fields %in% vec_remove_basicstats_fields)]
+
+# remove unecessary Statistic entries
+data_basicstats <- data_basicstats %>% 
+  filter(Statistic %in% vec_basicstats_fields) %>% 
+  mutate(
+    Statistic = as.factor(Statistic),
+    Year = as.factor(Year),
+    SustainableDevelopmentGoal = as.factor(SustainableDevelopmentGoal)
+  )
 
 # Subregion: Plot Dataframe ---------------------------------------------
 data_plots_region <- data_plots %>% 
