@@ -294,7 +294,7 @@ server <- function(input, output, session) {
               targets = 0, render = JS(
                 "function(data, type, row, meta) {",
                 "return type === 'display' && data.length > 20 ?",
-                "'<span title=\"' + data + '\">' + data.substr(0, 20) + '...</span>' : data;",
+                "'<span title=\"' + data + '\">' + data.substr(0, 38) + '...</span>' : data;",
                 "}"
               ) #JS
             ) #list
