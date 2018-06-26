@@ -135,9 +135,15 @@ ui <- dashboardPage(
 
           # Table: Country Details --------------------------------------------------
           box(
-            title = tags$b("Country Overview"), solidHeader = TRUE, status = "danger", width = 5,
+            title = tags$b("Country Overview"), solidHeader = TRUE, status = "danger", width = 7,
             dataTableOutput(outputId = "table_country_details", width = "100%")
-          ) #box
+          ), #box
+          
+          column(
+            width = 5,
+            valueBoxOutput(outputId = "valuebox_current_gdp", width = NULL),
+            valueBoxOutput(outputId = "valuebox_current_debt", width = NULL)
+          ) #column
           
         ) #fluidRow
       ) #tabItem

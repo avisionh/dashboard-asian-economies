@@ -54,4 +54,66 @@ server <- function(input, output, session) {
     }
   )
   
+
+  # InfoBox: Current GDP Change per year ------------------------------------
+  # 1. Extract current GDP Change per year
+  value_current_gdp <- reactive(
+    x = {
+      current_gdp <- select_country() %>% 
+        select(GDPRate201819, colour_gdp, icon_gdp, tooltip_gdp)
+      return(current_gdp)  
+    }
+  )
+  
+  # 2. Create output valueBox
+  output$valuebox_current_gdp <- renderValueBox(
+    expr = {
+      tags$div(
+        tipify(
+          el = valueBox(
+            value = paste0(value_current_gdp()$GDPRate201819, "%"),
+            subtitle = "Forecasted 2018-19 GDP Rate", 
+            icon = icon(name = value_current_gdp()$icon_gdp), 
+            color = value_current_gdp()$colour_gdp
+          ),
+          #note can't put apostrophes in title
+          title = value_current_gdp()$tooltip_gdp, 
+          placement = "left", trigger = "hover"
+        ) #tipify
+      ) #div
+    }
+  ) #renderValueBox
+  
+
+  # InfoBox: Current Debt Outstanding ---------------------------------------
+  # 1. Extract latest debt outstanding value
+  value_debt_outstanding <- reactive(
+    x = {
+      current_debt <- select_country() %>% 
+        select(OutstandingDebtUSDollar2017, colour_debt, icon_debt, tooltip_debt)
+      return(current_debt)
+    }
+  )
+  
+  # 2. Create output valueBox
+  output$valuebox_current_debt <- renderValueBox(
+    expr = {
+      tags$div(
+        tipify(
+          el = valueBox(
+            value = paste0("$", value_debt_outstanding()$OutstandingDebtUSDollar2017, "m"),
+            subtitle = "Latest Debt Outstanding", 
+            icon = icon(name = value_debt_outstanding()$icon_debt), 
+            color = value_debt_outstanding()$colour_debt
+          ),
+          title = value_debt_outstanding()$tooltip_debt,
+          placement = "left", trigger = "hover"
+        ) #tipify
+      ) #div
+    }
+  ) #renderValueBox
+
+  
+  
+    
 }
