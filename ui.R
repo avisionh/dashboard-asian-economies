@@ -26,8 +26,15 @@ ui <- dashboardPage(
       # Guidance tab
       menuItem(
         text = "Guidance",
-        icon = icon("info-circle"),
+        icon = icon(name = "info-circle"),
         tabName = "info_guidance"
+      ),
+      
+      # Country Report tab
+      menuItem(
+        text = "Country Report",
+        icon = icon(name = "window-maximize"),
+        tabName = "report_country"
       )
                
                
@@ -43,13 +50,13 @@ ui <- dashboardPage(
         tabName = "info_guidance",
         
         box(
-          width = 7, status = "warning", solidHeader = TRUE,
+          width = 7, status = "danger", solidHeader = TRUE,
           
           # Welcome
           h2(icon("info"), "Welcome"), hr(),
           
           div(
-            style = "font-size: 2.3vh;",
+            style = "font-size: 2vh;",
             "Welcome to an R Shiny dashboard of Asian Economies.",
             p("This dashboard collates economic information on a number of Asian countries.",
               strong("No responsibility will be take by the author if misuse of this information is made."))
@@ -61,7 +68,7 @@ ui <- dashboardPage(
           div(
             "Each of the tabs in the app are designed to do the following things:",
             tags$ul(
-              style = "font-size: 1.2vh;",
+              style = "font-size: 2vh;",
               tags$li("Navigate across different tabs by clicking on the options in the left-hand black vertical box."),
               tags$li("The ", strong("title"), " tab generic information.")
             )
@@ -77,7 +84,7 @@ ui <- dashboardPage(
         ), #box
         
         box(
-          width = 5, status = "warning", solidHeader = TRUE,
+          width = 5, status = "danger", solidHeader = TRUE,
             
           # Data Sources
           h2(icon("database"), "Data Sources"), hr(),
@@ -108,6 +115,31 @@ ui <- dashboardPage(
           hr()
         ) #box
       
+      ), #tabItem
+    
+
+      # Country Report ----------------------------------------------------------
+  
+      tabItem(
+        tabName = "report_country",
+        selectInput(
+          inputId = "name",
+          label = "Please choose a country",
+          choices = sort(data_consolidate$RegionalMember)
+        ),
+        
+
+        # Structure: Top Row ------------------------------------------------------
+        
+        fluidRow(
+
+          # Table: Country Details --------------------------------------------------
+          box(
+            title = tags$b("Country Overview"), solidHeader = TRUE, status = "danger", width = 5,
+            dataTableOutput(outputId = "table_country_details", width = "100%")
+          ) #box
+          
+        ) #fluidRow
       ) #tabItem
       
     ) #tabItems
