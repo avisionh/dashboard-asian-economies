@@ -24,6 +24,7 @@ library(dplyr)
 library(tidyr)
 library(magrittr)
 library(ggplot2)
+library(scales)
 
 # load external functions
 source("functions.R")
@@ -88,6 +89,26 @@ data_consolidate <- data_spread_gdp %>%
 data_consolidate <- data_consolidate %>% 
   add_columns_gdp(column = data_consolidate$GDPRate201819) %>% 
   add_columns_debt(column = data_consolidate$OutstandingDebtUSDollar2017)
+
+
+# Plot Dataframe ----------------------------------------------------------
+# 1. Transform each dataframe to right format for row-binding
+# NOTE (Need to functionalise this by lazy evaluation - check phone web-broswer)
+data_gdp <- data_gdp %>% 
+  mutate(key = "GDPGrowthperYearPercent") %>%
+  rename(value = GrossDomesticProductGrowthPerYearPercentage)
+data_tradebalance <- data_tradebalance %>% 
+  mutate(key = "TradeBalanceInUSDollarMillion") %>% 
+  rename(value = TradeBalanceInUSDollarMillion)
+data_externaldebtoutstanding <- data_externaldebtoutstanding %>% 
+  mutate(key = "DebtOutstandingUSDollarMillion") %>%
+  rename(value = ExternalDebtOutstandingInUSDollarMillion) 
+
+data_plots <- data_gdp %>% 
+  rbind(x = data_externaldebtoutstanding) %>% 
+  rbind(x = data_tradebalance) %>% 
+  # Add TRUE FALSE so can get red and blue colours if below or above zero
+  mutate(colour = ifelse(value < 0, TRUE, FALSE))
 
 
 # Scaffold ----------------------------------------------------------------

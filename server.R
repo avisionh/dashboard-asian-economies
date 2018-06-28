@@ -11,7 +11,7 @@ server <- function(input, output, session) {
  
 # --- Country Report --- #
 
-  # Reactive: Selected Country ----------------------------------------------
+  # Reactive: Selected Country on data_consolidate ----------------------------------------------
   # create reactive function to store the user's selected country to reuse later
   select_country <- reactive(
     x = {
@@ -19,6 +19,17 @@ server <- function(input, output, session) {
       filter(RegionalMember == input$name)
     
     return(data_select_country)
+    }
+  )
+  
+
+  # Reactive: Selected Country on data_gdp ----------------------------------
+  # Create reactive function to store the user's selected country to reuse for plots
+  select_country_plots <- reactive(
+    x = {
+      select_country_plots <- data_plots %>% 
+        filter(RegionalMember == input$name)
+      return(select_country_plots)
     }
   )
   
@@ -113,7 +124,71 @@ server <- function(input, output, session) {
     }
   ) #renderValueBox
 
+
+  # Plot: GDP Change --------------------------------------------------------
+  output$plot_gdpchange <- renderPlot(
+    
+    expr = {
+      
+      # filter dataframe for gdp
+      gdp_change <- select_country_plots() %>% 
+        filter(key == "GDPGrowthperYearPercent")
+      
+      custom_ggplot(
+        data = gdp_change,
+        axis_x = gdp_change$Year,
+        axis_y = gdp_change$value,
+        colours_column = gdp_change$colour,
+        plot_title = "GDP Change per Year",
+        plot_subtitle = input$name,
+        axis_y_title = "GDP Percentage Change",
+        axis_y_suffix = "%"
+      )
+    }
+    
+  )
   
+  output$plot_debt <- renderPlot(
+    
+    expr = {
+      
+      # filter dataframe for external debt outstanding
+      debt_outstanding <- select_country_plots() %>% 
+        filter(key == "DebtOutstandingUSDollarMillion")
+      
+      custom_ggplot(
+        data = debt_outstanding,
+        axis_x = debt_outstanding$Year,
+        axis_y = debt_outstanding$value,
+        colours_column = debt_outstanding$colour,
+        plot_title = "External Debt Outstanding",
+        plot_subtitle = input$name,
+        axis_y_title = "Value of outstanding external debt",
+        axis_y_prefix = "US$", axis_y_suffix = "m"
+      )
+    }
+    
+  )
   
+  output$plot_tradebalance <- renderPlot(
+    
+    expr = {
+      
+      # filter dataframe for trade balance
+      trade_balance <- select_country_plots() %>% 
+        filter(key == "TradeBalanceInUSDollarMillion")
+      
+      custom_ggplot(
+        data = trade_balance,
+        axis_x = trade_balance$Year,
+        axis_y = trade_balance$value,
+        colours_column = trade_balance$colour,
+        plot_title = "Trade Balance",
+        plot_subtitle = input$name,
+        axis_y_title = "Value of trade balance",
+        axis_y_prefix = "US$", axis_y_suffix = "m"
+      )
+    }
+  )
     
 }

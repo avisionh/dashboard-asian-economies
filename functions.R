@@ -4,6 +4,16 @@
 # DESC: The functions.R script houses functions for the app.
 
 
+# Row Bind Transformation -------------------------------------------------
+# Need to use lazy evaluation
+transform_for_row_bind <- function(x, key_name, col_name) {
+  x <- x %>%
+    mutate(key = key_name) %>%
+    rename(value = as.name(col_name)) %>%
+    select(CountryCode, RegionalMember, Year, Subregion, key, value)
+  return(x)
+}
+
 # GDP ValueBox Info -------------------------------------------------------
 
 add_columns_gdp <- function(x, column){
@@ -62,4 +72,34 @@ add_columns_debt <- function(x, column) {
     )
   return(x)
       
+}
+
+
+# Custom ggplot Function -----------------------------------------------------
+# DESC: Generic function to plot GDP Change, Trade Balance, Debt Outstanding
+custom_ggplot <- function(data, axis_x, axis_y, colours_column, plot_title, plot_subtitle, axis_y_title, axis_y_prefix = "", axis_y_suffix = "") {
+  ggplot(data = data, mapping = aes(x = axis_x, y = axis_y)) +
+    geom_line(colour = "grey") +
+    
+    # add custom colouring on negative and positive values
+    geom_point(mapping = aes(colour = colours_column), size = 3) +
+    scale_colour_manual(values = c("#0072B2", "#D55E00")) +
+    
+    # add 0-horizontal line
+    geom_hline(yintercept = 0, linetype = "dashed") +
+    
+    # include £ prefix
+    theme_classic() + 
+    scale_y_continuous(labels = dollar_format(prefix = axis_y_prefix, suffix = axis_y_suffix)) +
+    
+    # force unique academic years
+    scale_x_continuous(breaks = unique(axis_x)) +
+    labs(title = plot_title, subtitle = plot_subtitle) +
+    xlab("Academic Year") + ylab(axis_y_title) +
+    
+    # general plot themes
+    theme(plot.title = element_text(face = "bold", hjust = 0.5),
+          plot.subtitle = element_text(face = "bold", hjust = 0.5),
+          title = element_text(face = "bold"),
+          legend.position = "none")
 }
