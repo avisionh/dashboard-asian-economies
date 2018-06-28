@@ -30,13 +30,19 @@ ui <- dashboardPage(
         tabName = "info_guidance"
       ),
       
+      # Subregion Report tab
+      menuItem(
+        text = "Subregion Report",
+        icon = icon(name = "list-ul"),
+        tabName = "report_subregion"
+      ),
+      
       # Country Report tab
       menuItem(
         text = "Country Report",
         icon = icon(name = "window-maximize"),
         tabName = "report_country"
       )
-               
                
     ) #sideMenu
   ), #dashboardSidebar  
@@ -135,15 +141,9 @@ ui <- dashboardPage(
 
           # Table: Country Details --------------------------------------------------
           box(
-            title = tags$b("Country Overview"), solidHeader = TRUE, status = "danger", width = 7,
+            title = tags$b("Country Overview"), solidHeader = TRUE, status = "danger", width = 7, height = "25vh",
             dataTableOutput(outputId = "table_country_details", width = "100%")
-          ), #box
-          
-          column(
-            width = 5,
-            valueBoxOutput(outputId = "valuebox_current_gdp", width = NULL),
-            valueBoxOutput(outputId = "valuebox_current_debt", width = NULL)
-          ) #column
+          ) #box
           
         ), #fluidRow
         
@@ -156,11 +156,49 @@ ui <- dashboardPage(
             tabPanel(title = "GDP Percentage Change", height = "100%", plotOutput(outputId = "plot_gdpchange", height = "26vh")),
             tabPanel(title = "External Debt", height = "100%", plotOutput(outputId = "plot_debt", height = "26vh")),
             tabPanel(title = "Trade Balance", height = "100%", plotOutput(outputId = "plot_tradebalance", height = "26vh"))
-          )
-        )
+          ),
+          
+          column(
+            width = 6,
+            valueBoxOutput(outputId = "valuebox_current_gdp", width = NULL)
+          ), #column
+          column(
+            width = 6,
+            valueBoxOutput(outputId = "valuebox_current_debt", width = NULL)
+          ), #colmun
+          column(
+            width = 6,
+            valueBoxOutput(outputId = "valuebox_current_trade", width = NULL)
+          ) #column
+          
+        ) #fluidRow
         
-      ) #tabItem
+      ), #tabItem
       
+      tabItem(
+        tabName = "report_subregion",
+        selectInput(
+          inputId = "subregion",
+          label = "Please choose a subregion:",
+          choices = sort(unique(data_plots_region$Subregion))
+        ),
+        
+        fluidRow(
+          # Text: Country in subregion
+          box(
+            title = "Countries in Subregion",  solidHeader = TRUE, status = "danger", width = 3,
+            dataTableOutput(outputId = "table_subregion_countries")
+          ) #box
+        ), #fluidRow
+        
+        fluidRow(
+          valueBoxOutput(outputId = "valuebox_region_avg_gdp", width = NULL),
+          valueBoxOutput(outputId = "valuebox_region_debt", width = NULL),
+          valueBoxOutput(outputId = "valuebox_region_trade_balance", width = NULL)
+        )
+      )
+    
+    
     ) #tabItems
   
   ) #dashboardBody

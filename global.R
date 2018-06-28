@@ -82,13 +82,18 @@ data_consolidate <- data_spread_gdp %>%
   select(RegionalMember.x:TradeBalance2019, Currency:RateUSDollar2017) %>% 
   left_join(y = data_spread_debtleft, by = "CountryCode") %>% 
   select(RegionalMember.x:RateUSDollar2017, OutstandingDebtUSDollar2013:OutstandingDebtUSDollar2017) %>% 
-  rename(RegionalMember = RegionalMember.x,
-         Subregion = Subregion.x)
+  rename(RegionalMember = RegionalMember.x, Subregion = Subregion.x)
+
+# Create string of all subregions
+subregions <- unique(x = data_tradebalance$Subregion)
 
 # create valueBox and infoBox information
 data_consolidate <- data_consolidate %>% 
   add_columns_gdp(column = data_consolidate$GDPRate201819) %>% 
-  add_columns_debt(column = data_consolidate$OutstandingDebtUSDollar2017)
+  add_columns_debt(column = data_consolidate$OutstandingDebtUSDollar2017) %>% 
+  add_columns_trade(column = data_consolidate$TradeBalance2019) %>% 
+  # remove subregions in RegionalEconomy field
+  filter(RegionalMember %!in% subregions & RegionalMember != "Developing Asia excluding the Newly Industrialized Economies")
 
 
 # Plot Dataframe ----------------------------------------------------------
@@ -107,8 +112,10 @@ data_externaldebtoutstanding <- data_externaldebtoutstanding %>%
 data_plots <- data_gdp %>% 
   rbind(x = data_externaldebtoutstanding) %>% 
   rbind(x = data_tradebalance) %>% 
-  # Add TRUE FALSE so can get red and blue colours if below or above zero
-  mutate(colour = ifelse(value < 0, TRUE, FALSE))
+  # add TRUE FALSE so can get red and blue colours if below or above zero
+  mutate(colour = ifelse(value < 0, TRUE, FALSE)) %>% 
+  # remove 'Developing Asia excluding NIE
+  filter(Subregion %!in% c("Developing Asia", "Developing Asia excluding NIEs"))
 
 
 # Scaffold ----------------------------------------------------------------
@@ -119,3 +126,13 @@ scaffold_country_details <- tibble(
   `Info 2` = rep(x = NA, times = 3)
 )
 
+
+# Subregion: Plot Dataframe ---------------------------------------------
+data_plots_region <- data_plots %>% 
+  select(-c(RegionalMember, colour)) %>% 
+  group_by(Subregion, key) %>% 
+  summarise(mean_value = mean(value, na.rm = TRUE))
+data_plots_region$mean_value <- round(x = data_plots_region$mean_value, digits = 2)
+
+rm(data_exchangerate, data_externaldebtoutstanding, data_gdp, data_tradebalance,
+   data_spread_debtleft, data_spread_exchangerate, data_spread_gdp, data_spread_tradebalance)

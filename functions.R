@@ -4,6 +4,12 @@
 # DESC: The functions.R script houses functions for the app.
 
 
+# Not In Operator ---------------------------------------------------------
+# DESC: Create the opposite of the '%in%' operator
+'%!in%' <- function(x, y){
+  !('%in%'(x, y))
+}
+
 # Row Bind Transformation -------------------------------------------------
 # Need to use lazy evaluation
 transform_for_row_bind <- function(x, key_name, col_name) {
@@ -15,7 +21,6 @@ transform_for_row_bind <- function(x, key_name, col_name) {
 }
 
 # GDP ValueBox Info -------------------------------------------------------
-
 add_columns_gdp <- function(x, column){
   
   # create columns to refer to in valueBox() args in server.R
@@ -45,7 +50,6 @@ add_columns_gdp <- function(x, column){
 
 
 # External Debt Outstanding Info ------------------------------------------
-
 add_columns_debt <- function(x, column) {
   
   # create columns to refer to in valueBox() args in server.R
@@ -72,6 +76,34 @@ add_columns_debt <- function(x, column) {
     )
   return(x)
       
+}
+
+# Trade Balance ValueBox Info -------------------------------------------------------
+add_columns_trade <- function(x, column){
+  
+  # create columns to refer to in valueBox() args in server.R
+  x <- x %>% 
+    mutate(
+      colour_trade = case_when(
+        column < 0     ~ "red",
+        column == 0    ~ "yellow",
+        column > 0     ~ "green",
+        TRUE           ~ "light-blue"
+      ),
+      icon_trade = case_when(
+        column < 0     ~ "exclamation-triangle",
+        column == 0    ~ "exclamation-circle",
+        column > 0     ~ "certificate",
+        TRUE           ~ "question-circle"
+      ),
+      tooltip_trade = case_when(
+        column < 0     ~ "This country is forecasted to have a negative trade balance from 2018-19.",
+        column == 0    ~ "This country is forecasted to have an even trade balance from 2018-19.",
+        column > 0     ~ "This country is forecasted to have positive trade balance from 2018-19.",
+        TRUE           ~ "This country does not have forecasts for trade balance from 2018-19."
+      )
+    )
+  return(x)
 }
 
 

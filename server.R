@@ -15,21 +15,31 @@ server <- function(input, output, session) {
   # create reactive function to store the user's selected country to reuse later
   select_country <- reactive(
     x = {
-    data_select_country <- data_consolidate %>% 
-      filter(RegionalMember == input$name)
-    
+      data_select_country <- data_consolidate %>% 
+        filter(RegionalMember == input$name)
     return(data_select_country)
     }
   )
   
 
-  # Reactive: Selected Country on data_gdp ----------------------------------
+  # Reactive: Selected Country on data_plots ----------------------------------
   # Create reactive function to store the user's selected country to reuse for plots
   select_country_plots <- reactive(
     x = {
       select_country_plots <- data_plots %>% 
         filter(RegionalMember == input$name)
       return(select_country_plots)
+    }
+  )
+  
+
+  # Reactive: Selected Subregion on data_plots_region -----------------------
+  # Create reactive function to store the user's selected country to reuse for report
+  select_subregion_plots <- reactive(
+    x = {
+      select_subregion_plots <- data_plots_region %>% 
+        filter(Subregion == input$subregion)
+      return(select_subregion_plots)
     }
   )
   
@@ -112,12 +122,41 @@ server <- function(input, output, session) {
       tags$div(
         tipify(
           el = valueBox(
-            value = paste0("$", value_debt_outstanding()$OutstandingDebtUSDollar2017, "m"),
+            value = paste0(dollar(value_debt_outstanding()$OutstandingDebtUSDollar2017), "m"),
             subtitle = "Latest Debt Outstanding", 
             icon = icon(name = value_debt_outstanding()$icon_debt), 
             color = value_debt_outstanding()$colour_debt
           ),
           title = value_debt_outstanding()$tooltip_debt,
+          placement = "left", trigger = "hover"
+        ) #tipify
+      ) #div
+    }
+  ) #renderValueBox
+  
+  
+  # InfoBox: Current Trade Balance ---------------------------------------
+  # 1. Extract latest debt outstanding value
+  value_trade_balance <- reactive(
+    x = {
+      current_trade <- select_country() %>% 
+        select(TradeBalance2019, colour_trade, icon_trade, tooltip_trade)
+      return(current_trade)
+    }
+  )
+  
+  # 2. Create output valueBox
+  output$valuebox_current_trade <- renderValueBox(
+    expr = {
+      tags$div(
+        tipify(
+          el = valueBox(
+            value = paste0(dollar(value_trade_balance()$TradeBalance2019), "m"),
+            subtitle = "Trade Balance 2019", 
+            icon = icon(name = value_trade_balance()$icon_trade), 
+            color = value_trade_balance()$colour_trade
+          ),
+          title = value_trade_balance()$tooltip_trade,
           placement = "left", trigger = "hover"
         ) #tipify
       ) #div
@@ -148,6 +187,8 @@ server <- function(input, output, session) {
     
   )
   
+
+  # Plot: External Debt Outstanding -----------------------------------------
   output$plot_debt <- renderPlot(
     
     expr = {
@@ -170,6 +211,8 @@ server <- function(input, output, session) {
     
   )
   
+
+  # Plot: Trade Balance -----------------------------------------------------
   output$plot_tradebalance <- renderPlot(
     
     expr = {
@@ -190,5 +233,132 @@ server <- function(input, output, session) {
       )
     }
   )
+   
+# --- Subregion Report --- #   
+
+  # Text: Subregion countries -----------------------------------------------
+  # Create table of countries in subregion
+  output$table_subregion_countries <- renderDataTable(
+    expr = {
+      datatable(
+        data = data_consolidate %>% 
+          filter(Subregion == input$subregion) %>%
+          select(RegionalMember),
+        rownames = FALSE,
+        options = list(lengthChange = FALSE, scrollY = "30vh", searching = FALSE, info = FALSE, paging = FALSE, ordering = FALSE)
+      ) #datatable
+    }
+  ) #renderDataTable
+  
+
+  # InfoBox: Subregion Average GDP Growth  ----------------------------------
+  # 1. Extract average GDP Change
+  value_region_avg_gdp <- reactive(
+    x = {
+      avg_gdp <- select_subregion_plots() %>%
+        filter(key == "GDPGrowthperYearPercent")
+      return(avg_gdp)  
+    }
+  )
+  
+  # 2. Create output valueBox
+  output$valuebox_region_avg_gdp <- renderValueBox(
+    expr = {
+      tags$div(
+        tipify(
+          el = valueBox(
+            value = paste0(value_region_avg_gdp()$mean_value, "%"),
+            subtitle = "Average GDP Growth", 
+            icon = icon(name = "piggy-bank", lib = "glyphicon"), 
+            color = "maroon"
+          ),
+          title = "This is the average GDP growth rate of the region from 2013 to 2019 (where 2019 is a forecasted figure)",
+          placement = "left", trigger = "hover"
+        ) #tipify
+      ) #div
+    }
+  ) #renderValueBox
+  
+  
+  # InfoBox: Subregion Average Debt Outstanding  ----------------------------------
+  # 1. Extract average GDP Change
+  value_region_debt <- reactive(
+    x = {
+      avg_debt <- select_subregion_plots() %>%
+        filter(key == "DebtOutstandingUSDollarMillion")
+      return(avg_debt)  
+    }
+  )
+  
+  # 2. Create output valueBox
+  output$valuebox_region_debt <- renderValueBox(
+    expr = {
+      tags$div(
+        tipify(
+          el = valueBox(
+            value = paste0(dollar(value_region_debt()$mean_value), "m"),
+            subtitle = "Average External Debt", 
+            icon = icon(name = "hand-holding-usd"), 
+            color = "orange"
+          ),
+          title = "This is the average external debt outstanding for the region from 2013 to 2017",
+          placement = "left", trigger = "hover"
+        ) #tipify
+      ) #div
+    }
+  ) #renderValueBox
+  
+  
+  # InfoBox: Subregion Average Trade Balance  ----------------------------------
+  # 1. Extract average GDP Change
+  value_region_trade_balance <- reactive(
+    x = {
+      avg_trade_balance <- select_subregion_plots() %>%
+        filter(key == "TradeBalanceInUSDollarMillion")
+      return(avg_trade_balance)  
+    }
+  )
+  
+  # 2. Create output valueBox
+  output$valuebox_region_trade_balance <- renderValueBox(
+    expr = {
+      tags$div(
+        tipify(
+          el = valueBox(
+            value = paste0(dollar(value_region_trade_balance()$mean_value), "m"),
+            subtitle = "Average Trade Balance", 
+            icon = icon(name = "handshake"), 
+            color = "aqua"
+          ),
+          title = "This is the average trade balance for the region from 2013 to 2019 (where 2019 is a forecasted figure)",
+          placement = "left", trigger = "hover"
+        ) #tipify
+      ) #div
+    }
+  ) #renderValueBox
+  
+  # Observer - Drill-through from Subregion to Country Report -------------------------------
+  
+  observeEvent(
     
+    eventExpr = {input$table_subregion_countries_rows_selected},
+    
+    handlerExpr = {
+      # user-selected variable
+      
+      # 1. User selects subregion in report_subregion which reduces data_consolidate rows, table_subregion_countries
+      # 2. User selecting country here wants this country to change on report_country
+      # 3. temp[input$table_subregion_countries_rows_selected, 1] in name_country returns row number
+      #     hence need to filter data_consolidate, temp, before creating name_country
+      #     to obtain user-selected country from report_subregion
+      temp <- data_consolidate %>% filter(Subregion == input$subregion)
+      name_country <- as.character(temp[input$table_subregion_countries_rows_selected, 1])
+      
+      updateTabItems(session, inputId = "menu", selected = "report_country")
+      updateSelectInput(session, inputId = "name", selected = name_country)
+      dataTableProxy(outputId = "table_subregion_countries") %>% 
+        selectRows(selected = list())
+    }
+  )
+  
 }
