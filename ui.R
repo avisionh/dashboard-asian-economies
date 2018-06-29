@@ -62,10 +62,9 @@ ui <- dashboardPage(
           h2(icon("info"), "Welcome"), hr(),
           
           div(
-            style = "font-size: 2vh;",
             "Welcome to an R Shiny dashboard of Asian Economies.",
-            p("This dashboard collates economic information on a number of Asian countries.",
-              strong("No responsibility will be take by the author if misuse of this information is made."))
+            p("This dashboard collates economic information on a number of Asian countries."),
+            p(strong("No responsibility will be take by the author if misuse of this information is made."))
           ),
           
           # Using the app
@@ -74,18 +73,19 @@ ui <- dashboardPage(
           div(
             "Each of the tabs in the app are designed to do the following things:",
             tags$ul(
-              style = "font-size: 2vh;",
               tags$li("Navigate across different tabs by clicking on the options in the left-hand black vertical box."),
               tags$li("The ", strong("title"), " tab generic information.")
             )
           ),
           
           h2(icon("question-circle-o"), "Further Information"), hr(),
-          h4("Useful information about the Data Sources used, the 
-             Construction and Security of the app are placed in the box on 
-             the right hand side of this page. Please send any questions or feedback to ", 
-             a(href = "mailto:a_vision@hotmail.co.uk"),
-             " or on GitHub."), hr()
+          div(
+            "Useful information about the Data Sources used, the 
+            Construction and Security of the app are placed in the box on 
+            the right hand side of this page. Please send any questions or feedback to ", 
+            a(href = "mailto:a_vision@hotmail.co.uk", "my email"),
+            " or to my ", a(href = "github.com/avisionh", "GitHub.")
+          ), hr()
           
         ), #box
         
@@ -95,30 +95,27 @@ ui <- dashboardPage(
           # Data Sources
           h2(icon("database"), "Data Sources"), hr(),
             
-          h4("This app uses data from: "), br(),
-          h4(
+          div(
+            "This app uses data from: ", br(),
             tags$ul(
               tags$li("Data Item 1"),
               tags$li("Data Item 2"),
               tags$li("Data Item 3")
             )
-          ),
-            
-          hr(),
+          ), hr(),
             
           # Construction
           h2(icon("cogs"), "Construction"), hr(),
             
-          h4("This app has been constructed using: "), br(),
-          h4(
+          div(
+            "This app has been constructed using: ", br(),
             tags$ul(
               tags$li(a(href = "https://www.r-project.org/", "R"), "(for the data processing and calculation)"),
               tags$li(a(href = "https://shiny.rstudio.com/", "R Shiny", target = "_blank"), "(for the app design and interactivity)"),
               tags$li(a(href = "https://rstudio.github.io/shinydashboard/", "Shiny Dashboard", target = "_blank"), "(for the app layout and structure)")
             )
-          ),
-            
-          hr()
+          ), hr()
+          
         ) #box
       
       ), #tabItem
@@ -149,27 +146,27 @@ ui <- dashboardPage(
         
         fluidRow(
           
-          # Plots
-          tabBox(
-            width = 5,
-            height = "32vh",
-            tabPanel(title = "GDP Percentage Change", height = "100%", plotOutput(outputId = "plot_gdpchange", height = "26vh")),
-            tabPanel(title = "External Debt", height = "100%", plotOutput(outputId = "plot_debt", height = "26vh")),
-            tabPanel(title = "Trade Balance", height = "100%", plotOutput(outputId = "plot_tradebalance", height = "26vh"))
+          # Basic Stats
+          box(
+            status = "danger", width = 6,
+            dataTableOutput(outputId = "table_basic_stats")
           ),
           
           column(
             width = 6,
-            valueBoxOutput(outputId = "valuebox_current_gdp", width = NULL)
-          ), #column
-          column(
-            width = 6,
-            valueBoxOutput(outputId = "valuebox_current_debt", width = NULL)
-          ), #colmun
-          column(
-            width = 6,
+            valueBoxOutput(outputId = "valuebox_current_gdp", width = NULL),
+            valueBoxOutput(outputId = "valuebox_current_debt", width = NULL),
             valueBoxOutput(outputId = "valuebox_current_trade", width = NULL)
-          ) #column
+          ),
+          
+          # Plots
+          tabBox(
+            width = 6,
+            height = "47vh",
+            tabPanel(title = "GDP Percentage Change", height = "100%", plotOutput(outputId = "plot_gdpchange", height = "40vh")),
+            tabPanel(title = "External Debt", height = "100%", plotOutput(outputId = "plot_debt", height = "40vh")),
+            tabPanel(title = "Trade Balance", height = "100%", plotOutput(outputId = "plot_tradebalance", height = "40vh"))
+          )
           
         ) #fluidRow
         

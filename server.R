@@ -33,6 +33,16 @@ server <- function(input, output, session) {
   )
   
 
+  # Reactive: Selected Country on data_basicstats ---------------------------
+  select_country_stats <- reactive(
+    x = {
+      data_select_country_stats <- data_basicstats %>% 
+        filter(RegionalEconomy == input$name)
+      return(data_select_country_stats)
+    }
+  )
+
+  
   # Reactive: Selected Subregion on data_plots_region -----------------------
   # Create reactive function to store the user's selected country to reuse for report
   select_subregion_plots <- reactive(
@@ -93,7 +103,7 @@ server <- function(input, output, session) {
         tipify(
           el = valueBox(
             value = paste0(value_current_gdp()$GDPRate201819, "%"),
-            subtitle = "Forecasted 2018-19 GDP Rate", 
+            subtitle = "Lastest GDP Rate Forecast", 
             icon = icon(name = value_current_gdp()$icon_gdp), 
             color = value_current_gdp()$colour_gdp
           ),
@@ -152,7 +162,7 @@ server <- function(input, output, session) {
         tipify(
           el = valueBox(
             value = paste0(dollar(value_trade_balance()$TradeBalance2019), "m"),
-            subtitle = "Trade Balance 2019", 
+            subtitle = "Latest Trade Balance Forecast", 
             icon = icon(name = value_trade_balance()$icon_trade), 
             color = value_trade_balance()$colour_trade
           ),
@@ -233,6 +243,74 @@ server <- function(input, output, session) {
       )
     }
   )
+  
+
+  # Table: Basic Statistics -------------------------------------------------
+  output$table_basic_stats <- renderDataTable(
+    expr = {
+      datatable(
+        
+        data = select_country_stats() %>% 
+          select(Statistic, Year, Value, UnitOfMeasurement, SustainableDevelopmentGoal) %>% 
+          rename(
+            `Unit of Measurement` = UnitOfMeasurement,
+            `Sustainable Development Goal` = SustainableDevelopmentGoal
+          ),
+        
+        # add strips to left and right of cells and set width
+        class = "cell-border stripe",
+        
+        # add filter boxes to each column and turn off rownames
+        filter = list(position = "top", clear = TRUE), rownames = FALSE,
+        
+        # set rows to 10, add download button, and order by Statistic
+        extensions = "Buttons",
+        
+        options = list(
+          pageLength = 10, scrollX = TRUE, order = list(0, "asc"),
+          
+          # fix row height
+          lengthChange = FALSE, scrollY = "39vh",
+          
+          # only show table and pagination/page no.s at bottom
+          info = FALSE,
+          # add download buttons
+          dom = 'Bfrtip',
+          buttons = list(
+            list(extend = 'collection',buttons = c('csv', 'excel', 'pdf'), text = "Download"), 
+            "print"
+          ),
+          
+          # colour table header black
+          initComplete = JS(
+            "function(settings, json) {",
+            "$(this.api().table().header()).css({'background-color': '#000', 'color': '#fff'});",
+            "}"
+          ),
+          
+          # show only first 20 characters of Name
+          columnDefs = list(
+            list(
+              targets = 0, render = JS(
+                "function(data, type, row, meta) {",
+                "return type === 'display' && data.length > 20 ?",
+                "'<span title=\"' + data + '\">' + data.substr(0, 38) + '...</span>' : data;",
+                "}"
+              ) #JS
+            ) #list
+          ) #list
+        ) #list
+      ) %>%
+      
+      # make Statistic column bold and colour Value column
+      formatStyle(columns = "Statistic", fontWeight = "bold") %>% 
+      formatStyle(columns = "Value", fontWeight = "bold", color = "#cccc00")
+    },
+    
+    # allow download of entire data_basicstats table
+    server = FALSE
+  )
+  
    
 # --- Subregion Report --- #   
 
