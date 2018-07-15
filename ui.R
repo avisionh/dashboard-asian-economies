@@ -140,6 +140,12 @@ ui <- dashboardPage(
           box(
             title = tags$b("Country Overview"), solidHeader = TRUE, status = "danger", width = 7, height = "25vh",
             dataTableOutput(outputId = "table_country_details", width = "100%")
+          ), #box
+          
+
+          # Map: Country ------------------------------------------------------------
+          box(
+            title = tags$b("Map"), solidHeader = TRUE, status = "danger", width = 5, height = "25vh"
           ) #box
           
         ), #fluidRow

@@ -188,4 +188,4 @@ data_plots_region$mean_value <- round(x = data_plots_region$mean_value, digits =
 
 rm(data_exchangerate, data_externaldebtoutstanding, data_gdp, data_tradebalance,
    data_spread_debtleft, data_spread_exchangerate, data_spread_gdp, data_spread_tradebalance,
-   vec_basicstats_fields, vec_remove_basicstats_fields)
+   vec_basicstats_fields, vec_remove_basicstats_fields, vec_subregions)
