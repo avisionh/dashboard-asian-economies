@@ -4,6 +4,9 @@
 
 This project collates information from the Asian Development Bank's [website](https://data.adb.org/search/field_topic/economics-131/type/dataset?sort_by=changed&q=search/field_topic/economics-131/type/dataset&page=0%2C0) to present information on Asian economies.
 
+The development version of this app is hosted on shinyapps.io and can be viewed at the link below:
+https://avisionh.shinyapps.io/shiny-dashboard-app/
+
 ***
 
 ## Data
