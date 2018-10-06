@@ -1,6 +1,6 @@
 # Shiny Dashboard App
 
-[![Travis-CI Build Status](https://travis-ci.org/avisionh/Shiny-Dashboard-App.svg?branch=master)](https://travis-ci.org/avisionh/Shiny-Dashboard-App)
+[![Travis-CI Build Status](https://travis-ci.org/avisionh/Shiny-Dashboard-App-Asian-Economies.svg?branch=master)](https://travis-ci.org/avisionh/Shiny-Dashboard-App)
 
 This project collates information from the Asian Development Bank's [website](https://data.adb.org/search/field_topic/economics-131/type/dataset?sort_by=changed&q=search/field_topic/economics-131/type/dataset&page=0%2C0) to present information on Asian economies.
 
