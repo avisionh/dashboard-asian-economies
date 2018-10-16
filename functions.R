@@ -51,13 +51,13 @@ modal <- function(failed = FALSE) {
       div(style = "text-align: center;",
           actionButton(inputId = "pwd-submit", label = "Submit")
       )
-    ),
+    )#,
     
     # Logic for dynmically including warning message
-    if(!(is.na(message_warning))) {
-      div(style = "font-size: 2vh;",
-          HTML("<strong>WARNING: </strong> \n"), message_warning)
-    }
+    # if(!(is.na(message_warning))) {
+    #   div(style = "font-size: 2vh;",
+    #       HTML("<strong>WARNING: </strong> \n"), message_warning)
+    # }
     
   ) #modalDialog
 }

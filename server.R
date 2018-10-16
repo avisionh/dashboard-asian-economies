@@ -8,6 +8,30 @@
 #       server.R must create a function called server, like below:
 
 server <- function(input, output, session) {
+  
+  # Password and T&Cs Pop-up Box ---------------------------------------------------------
+    
+  # show modalDialog on app start-up
+  showModal(modal())  
+  
+  # check password and render UI if correct
+  observeEvent(
+    
+    eventExpr = input$`pwd-submit`,
+    
+    handlerExpr = {
+      
+      # store hash of password in a 'veneer' of security
+      if (input$password == "incorrect") {
+        removeModal()
+      # } else if (digest(input$password) == "$2a$12$wS.gHwArASrlyznfBcKNmuT0ovAyCoPEf9E8vN3b8rXQrrMnfssee") {
+      #   removeModal()
+      } else {
+        showModal(modal(failed = TRUE))
+      }
+    }
+  )
+
  
 # --- Country Report --- #
 
