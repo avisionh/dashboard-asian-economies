@@ -22,11 +22,10 @@ modal <- function(failed = FALSE) {
     "1.	You understand that the following applies to this dashboard:", br(), br(),
     tags$ul(
       tags$li("The data in this app comes from the Asia Development Bank."), br(),
-      tags$li("The author of the app is not liable to any uses nor applications of the app."), br(),
-      tags$li("RAT guidance is available, including webinars containing RAT training.")
+      tags$li("The author of the app is not liable for any potential misuses of the app."), br(),
+      tags$li("Any work built on top of this code is shared publicly in line with the spirit of open data.")
     ), br(),
-    "2.	You confirm that you have completed your responsible for information training and you agree not share the data externally and to recognise 
-    data sensitivity issues.", br(), br(),
+    "2.	You confirm that you any work built off of this is credited to the right author.", br(), br(),
     
     "By logging into the app, you are agreeing to these Terms of Use.", br(), br(),
     
@@ -51,13 +50,13 @@ modal <- function(failed = FALSE) {
       div(style = "text-align: center;",
           actionButton(inputId = "pwd-submit", label = "Submit")
       )
-    )#,
+    ),
     
     # Logic for dynmically including warning message
-    # if(!(is.na(message_warning))) {
-    #   div(style = "font-size: 2vh;",
-    #       HTML("<strong>WARNING: </strong> \n"), message_warning)
-    # }
+    if(!(is.na(message_warning))) {
+      div(style = "text-align:center; font-size: 2vh;",
+          HTML("<strong>WARNING: </strong> \n"), message_warning)
+    }
     
   ) #modalDialog
 }
