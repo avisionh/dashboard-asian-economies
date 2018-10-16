@@ -29,6 +29,11 @@ library(scales)
 # load external functions
 source("functions.R")
 
+
+# Global Variables --------------------------------------------------------
+message_warning <- "This app is currently under development and further features will be added."
+
+
 # Data Import -------------------------------------------------------------
 data_gdp <- read_csv(file = "data/ADO_GDP_201819AreForecasts.csv")
 data_basicstats <- read_csv(file = "data/BasicStatistics_2018.csv")

@@ -24,8 +24,6 @@ server <- function(input, output, session) {
       # store hash of password in a 'veneer' of security
       if (input$password == "incorrect") {
         removeModal()
-      # } else if (digest(input$password) == "$2a$12$wS.gHwArASrlyznfBcKNmuT0ovAyCoPEf9E8vN3b8rXQrrMnfssee") {
-      #   removeModal()
       } else {
         showModal(modal(failed = TRUE))
       }
