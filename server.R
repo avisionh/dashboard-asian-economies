@@ -85,7 +85,7 @@ server <- function(input, output, session) {
       datatable(
         data = data_consolidate %>% 
           filter(Subregion == input$subregion) %>%
-          select(RegionalMember),
+          # select(RegionalMember),
         rownames = FALSE,
         options = list(lengthChange = FALSE, scrollY = "30vh", searching = FALSE, info = FALSE, paging = FALSE, ordering = FALSE)
       ) #datatable

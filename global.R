@@ -26,6 +26,11 @@ library(magrittr)
 library(ggplot2)
 library(scales)
 
+# mapping
+library(countrycode)
+library(rworldmap)
+library(spatialEco)
+
 # load external functions
 source("functions.R")
 
@@ -191,6 +196,33 @@ data_plots_region <- data_plots %>%
   summarise(mean_value = mean(value, na.rm = TRUE))
 data_plots_region$mean_value <- round(x = data_plots_region$mean_value, digits = 2)
 
+
+# Mapping -------------------------------------------------------
+# DESC: Only needs to be done once to get data
+
+# 1. Load spatial polygon dataframe for assignment
+data(countriesLow)
+
+# 2. Turns promise created in line above into a formal spatial polygon dataframe
+data_world <- countriesLow
+
+# 3. Filter spatial dataframe so we can get unique merge on ISO3 field
+data_world <- data_world %>% 
+  # cannot use dplyr::filter() for spatial polyon dataframe
+  # need to filter to get unique field for merge/join
+  subset(TYPE %in% c("Country", "Sovereign Country"))
+
+# 4. Merge/Join two dataframes together
+data_map <- sp::merge(x = data_consolidate, y = data_world, by.x = "CountryCode", by.y = "ISO3", sort = FALSE)
+
+# 5. Reduce number of columns for 'data' of S4 object, data_map 
+data_map <- data_map[, c("RegionalMember", "CountryCode", "continent",  "Subregion")] 
+
+
+# Clean -------------------------------------------------------------------
+# DESC: Remove unecessary objects
 rm(data_exchangerate, data_externaldebtoutstanding, data_gdp, data_tradebalance,
    data_spread_debtleft, data_spread_exchangerate, data_spread_gdp, data_spread_tradebalance,
-   vec_basicstats_fields, vec_remove_basicstats_fields, vec_subregions)
+   vec_basicstats_fields, vec_remove_basicstats_fields, vec_subregions,
+   countriesLow, data_world)
+
