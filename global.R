@@ -213,11 +213,18 @@ data_world <- data_world %>%
   subset(TYPE %in% c("Country", "Sovereign Country"))
 
 # 4. Merge/Join two dataframes together
-data_map <- sp::merge(x = data_consolidate, y = data_world, by.x = "CountryCode", by.y = "ISO3", sort = FALSE)
+data_map <- sp::merge(x = data_world, y = data_consolidate, by.x = "ISO3", by.y = "CountryCode", sort = FALSE)
 
 # 5. Reduce number of columns for 'data' of S4 object, data_map 
-data_map <- data_map[, c("RegionalMember", "CountryCode", "continent",  "Subregion")] 
+data_map <- data_map[, c("RegionalMember", "ISO3", "continent",  "Subregion")] 
 
+# 6. Remove NA countries and rename 'ISO3' to 'CountryCode'
+data_map <- sp.na.omit(x = data_map, col.name = "RegionalMember")
+data_map@data <- data_map@data %>% 
+  rename(CountryCode = ISO3,
+         Continent = continent)
+# 7. Write to folder
+rgdal::writeOGR(obj = data_map, dsn = ".", layer = "data/mapping/data_map", driver="ESRI Shapefile")
 
 # Clean -------------------------------------------------------------------
 # DESC: Remove unecessary objects
