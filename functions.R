@@ -10,6 +10,57 @@
   !('%in%'(x, y))
 }
 
+# Modal Dialog box --------------------------------------------------------
+modal <- function(failed = FALSE) {
+  
+  modalDialog(
+    
+    title = tags$b("Terms of Use"),
+    
+    "Please confirm that you agree to the following:", br(), br(),
+    
+    "1.	You understand that the following applies to this dashboard:", br(), br(),
+    tags$ul(
+      tags$li("The data in this app comes from the Asia Development Bank."), br(),
+      tags$li("The author of the app is not liable for any potential misuses of the app."), br(),
+      tags$li("Any work built on top of this code is shared publicly in line with the spirit of open data.")
+    ), br(),
+    "2.	You confirm that you any work built off of this is credited to the right author.", br(), br(),
+    
+    "By logging into the app, you are agreeing to these Terms of Use.", br(), br(),
+    
+    # centre password input box, to ensure logging in
+    div(style = "width: 200px ;
+        margin-left: auto ;
+        margin-right: auto ;
+        text-align: center;",
+        passwordInput(inputId = "password",
+                      label = "Password:",
+                      placeholder = "********")
+    ),
+    
+    # if login fails, add message to say so
+    if (failed) div(
+      style = "text-align: center;", 
+      tags$b("Your password is incorrect, please try again", style = "color: red;")
+    ),
+    
+    # only have actionButton in footer, no modealButton so not easy to close
+    footer = tagList(
+      div(style = "text-align: center;",
+          actionButton(inputId = "pwd-submit", label = "Submit")
+      )
+    ),
+    
+    # Logic for dynmically including warning message
+    if(!(is.na(message_warning))) {
+      div(style = "text-align:center; font-size: 2vh;",
+          HTML("<strong>WARNING: </strong> \n"), message_warning)
+    }
+    
+  ) #modalDialog
+}
+
 # Row Bind Transformation -------------------------------------------------
 # Need to use lazy evaluation
 transform_for_row_bind <- function(x, key_name, col_name) {
