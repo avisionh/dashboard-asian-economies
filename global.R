@@ -30,6 +30,7 @@ library(scales)
 library(countrycode)
 library(rworldmap)
 library(spatialEco)
+library(leaflet)
 
 # load external functions
 source("functions.R")
@@ -37,6 +38,9 @@ source("functions.R")
 
 # Global Variables --------------------------------------------------------
 message_warning <- "This app is currently under development and further features will be added."
+ # needs to be made dynamic e.g. data_map@data$Subregion %>% unique()
+cb_palette <- colorFactor(palette = c("#1f77b4", "#ff7f0e", "#2ca02c", "#d62728", "#9467bd"), 
+                     domain = c("South Asia", "Central Asia", "Southeast Asia", "East Asia", "The Pacific"))
 
 
 # Data Import -------------------------------------------------------------
@@ -207,7 +211,7 @@ data(countriesLow)
 data_world <- countriesLow
 
 # 3. Filter spatial dataframe so we can get unique merge on ISO3 field
-data_world <- data_world %>% 
+data_world <- data_world %>%
   # cannot use dplyr::filter() for spatial polyon dataframe
   # need to filter to get unique field for merge/join
   subset(TYPE %in% c("Country", "Sovereign Country"))
@@ -216,15 +220,17 @@ data_world <- data_world %>%
 data_map <- sp::merge(x = data_world, y = data_consolidate, by.x = "ISO3", by.y = "CountryCode", sort = FALSE)
 
 # 5. Reduce number of columns for 'data' of S4 object, data_map 
-data_map <- data_map[, c("RegionalMember", "ISO3", "continent",  "Subregion")] 
+data_map <- data_map[, c("RegionalMember", "ISO3", "continent",  "Subregion")]
 
 # 6. Remove NA countries and rename 'ISO3' to 'CountryCode'
 data_map <- sp.na.omit(x = data_map, col.name = "RegionalMember")
-data_map@data <- data_map@data %>% 
+data_map@data <- data_map@data %>%
   rename(CountryCode = ISO3,
          Continent = continent)
 # 7. Write to folder
 rgdal::writeOGR(obj = data_map, dsn = ".", layer = "data/mapping/data_map", driver="ESRI Shapefile")
+
+# data_map <- rgdal::readOGR(dsn = ".", layer = "data/mapping/data_map", verbose = FALSE)
 
 # Clean -------------------------------------------------------------------
 # DESC: Remove unecessary objects

@@ -76,6 +76,15 @@ server <- function(input, output, session) {
   )
   
   
+  # Reactive: Selected Subregion on data_maps -----------------------
+  select_country_map <- reactive(
+    x = {
+      select_country_map <- data_map %>% 
+        subset(RegionalMember == input$name)
+      return(select_country_map)
+    }
+  )
+  
 # --- Subregion Report --- #   
   
   # Text: Subregion countries -----------------------------------------------
@@ -84,8 +93,7 @@ server <- function(input, output, session) {
     expr = {
       datatable(
         data = data_consolidate %>% 
-          filter(Subregion == input$subregion) %>%
-          # select(RegionalMember),
+          filter(Subregion == input$subregion),
         rownames = FALSE,
         options = list(lengthChange = FALSE, scrollY = "30vh", searching = FALSE, info = FALSE, paging = FALSE, ordering = FALSE)
       ) #datatable
@@ -212,6 +220,22 @@ server <- function(input, output, session) {
         formatStyle(columns = c("Country Details", "Currency Details"), fontWeight = "bold")
     }
   )
+  
+
+  # Map: Country ------------------------------------------------------------
+  output$map_country <- renderLeaflet(
+    expr = {
+      leaflet(data = select_country_map()) %>% 
+        addProviderTiles("CartoDB.Positron") %>%
+        setView(9.998176, 14.531777, zoom = 2) %>%
+        addPolygons(color = "#969696", 
+                    weight = 2, 
+                    fillColor = ~cb_palette(Subregion), 
+                    fillOpacity = 0.8, 
+                    label = ~as.character(RegionalMember))
+    }
+  ) 
+  
   
 
   # InfoBox: Current GDP Change per year ------------------------------------
