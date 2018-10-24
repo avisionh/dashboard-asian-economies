@@ -81,6 +81,7 @@ server <- function(input, output, session) {
     x = {
       select_country_map <- data_map %>% 
         subset(RegionalMember == input$name)
+      print(select_country_map@data)
       return(select_country_map)
     }
   )
@@ -226,8 +227,10 @@ server <- function(input, output, session) {
   output$map_country <- renderLeaflet(
     expr = {
       leaflet(data = select_country_map()) %>% 
-        addProviderTiles("CartoDB.Positron") %>%
-        setView(9.998176, 14.531777, zoom = 2) %>%
+        addProviderTiles(provider = "CartoDB.Positron") %>%
+        setView(lng = 76.020001, lat = 39.303001, zoom = 2) %>%
+        # include non-selected asia countries
+        addPolygons(data = data_map, color = "#969696", weight = 1, fillColor = "#808080") %>% 
         addPolygons(color = "#969696", 
                     weight = 2, 
                     fillColor = ~cb_palette(Subregion), 

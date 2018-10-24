@@ -146,7 +146,7 @@ ui <- dashboardPage(
           # Map: Country ------------------------------------------------------------
           box(
             title = tags$b("Map"), solidHeader = TRUE, status = "danger", width = 5, height = "25vh",
-            leafletOutput("map_country")
+            leafletOutput(outputId = "map_country", height = "19vh")
           ) #box
           
         ), #fluidRow

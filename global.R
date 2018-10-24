@@ -210,25 +210,21 @@ data(countriesLow)
 # 2. Turns promise created in line above into a formal spatial polygon dataframe
 data_world <- countriesLow
 
-# 3. Filter spatial dataframe so we can get unique merge on ISO3 field
-data_world <- data_world %>%
-  # cannot use dplyr::filter() for spatial polyon dataframe
-  # need to filter to get unique field for merge/join
-  subset(TYPE %in% c("Country", "Sovereign Country"))
-
-# 4. Merge/Join two dataframes together
+# 3. Merge/Join two dataframes together
 data_map <- sp::merge(x = data_world, y = data_consolidate, by.x = "ISO3", by.y = "CountryCode", sort = FALSE)
 
-# 5. Reduce number of columns for 'data' of S4 object, data_map 
+# 4. Reduce number of columns for 'data' of S4 object, data_map 
 data_map <- data_map[, c("RegionalMember", "ISO3", "continent",  "Subregion")]
 
-# 6. Remove NA countries and rename 'ISO3' to 'CountryCode'
-data_map <- sp.na.omit(x = data_map, col.name = "RegionalMember")
+# 5. Remove NA countries and rename 'ISO3' to 'CountryCode'
 data_map@data <- data_map@data %>%
   rename(CountryCode = ISO3,
          Continent = continent)
-# 7. Write to folder
-rgdal::writeOGR(obj = data_map, dsn = ".", layer = "data/mapping/data_map", driver="ESRI Shapefile")
+ 
+data_map <- sp.na.omit(x = data_map, col.name = "RegionalMember")
+
+# 7. Write to folder - want this to work so not always generating polygons
+#rgdal::writeOGR(obj = data_map, dsn = ".", layer = "data/mapping/data_map", driver="ESRI Shapefile")
 
 # data_map <- rgdal::readOGR(dsn = ".", layer = "data/mapping/data_map", verbose = FALSE)
 
