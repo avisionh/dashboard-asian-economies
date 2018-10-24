@@ -109,7 +109,8 @@ server <- function(input, output, session) {
           rename(Country = RegionalMember,
                  `Country Code` = CountryCode),
         rownames = FALSE,
-        options = list(lengthChange = FALSE, scrollY = "30vh", searching = FALSE, info = FALSE, paging = FALSE, ordering = FALSE)
+        #height = "15vh",
+        options = list(lengthChange = FALSE, scrollY = "20vh", searching = FALSE, info = FALSE, paging = FALSE, ordering = FALSE)
       ) #datatable
     }
   ) #renderDataTable
