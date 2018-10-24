@@ -75,7 +75,7 @@ server <- function(input, output, session) {
     }
   )
   
-  
+ 
   # Reactive: Selected subregion on data_maps -----------------------
   select_subregion_map <- reactive(
     x = {
@@ -96,6 +96,7 @@ server <- function(input, output, session) {
     }
   )
   
+
 # --- Subregion Report --- #   
   
   # Text: Subregion countries -----------------------------------------------
@@ -131,7 +132,6 @@ server <- function(input, output, session) {
                     label = ~as.character(RegionalMember))
     }
   ) #renderLeaflet
-  
   
   
   # InfoBox: Subregion Average GDP Growth  ----------------------------------
@@ -272,7 +272,6 @@ server <- function(input, output, session) {
   ) 
   
   
-
   # InfoBox: Current GDP Change per year ------------------------------------
   # Create output valueBox
   output$valuebox_current_gdp <- renderValueBox(
