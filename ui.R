@@ -133,7 +133,7 @@ ui <- dashboardPage(
         fluidRow(
           # Text: Country in subregion
           box(
-            title = "Countries in Subregion",  solidHeader = TRUE, status = "danger", width = 3,
+            title = "Countries in Subregion",  solidHeader = TRUE, status = "danger", width = 4,
             dataTableOutput(outputId = "table_subregion_countries")
           ) #box
         ), #fluidRow

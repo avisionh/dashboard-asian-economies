@@ -94,7 +94,10 @@ server <- function(input, output, session) {
     expr = {
       datatable(
         data = data_consolidate %>% 
-          filter(Subregion == input$subregion),
+          filter(Subregion == input$subregion) %>% 
+          select(RegionalMember, Subregion, CountryCode) %>% 
+          rename(Country = RegionalMember,
+                 `Country Code` = CountryCode),
         rownames = FALSE,
         options = list(lengthChange = FALSE, scrollY = "30vh", searching = FALSE, info = FALSE, paging = FALSE, ordering = FALSE)
       ) #datatable
