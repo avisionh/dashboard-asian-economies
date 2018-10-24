@@ -228,7 +228,7 @@ server <- function(input, output, session) {
     expr = {
       leaflet(data = select_country_map()) %>% 
         addProviderTiles(provider = "CartoDB.Positron") %>%
-        setView(lng = 76.020001, lat = 39.303001, zoom = 2) %>%
+        setView(lng = 76.020001, lat = 39.303001, zoom = 1) %>%
         # include non-selected asia countries
         addPolygons(data = data_map, color = "#969696", weight = 1, fillColor = "#808080") %>% 
         addPolygons(color = "#969696", 
