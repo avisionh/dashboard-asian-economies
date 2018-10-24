@@ -133,8 +133,14 @@ ui <- dashboardPage(
         fluidRow(
           # Text: Country in subregion
           box(
-            title = "Countries in Subregion",  solidHeader = TRUE, status = "danger", width = 4,
+            title = "Countries in Subregion",  solidHeader = TRUE, status = "danger", width = 4, height = "31vh",
             dataTableOutput(outputId = "table_subregion_countries")
+          ), #box
+          
+          # Map: Subregion ------------------------------------------------------------
+          box(
+            title = tags$b("Map"), solidHeader = TRUE, status = "danger", width = 8, height = "31vh",
+            leafletOutput(outputId = "map_subregion", height = "25vh")
           ) #box
         ), #fluidRow
         

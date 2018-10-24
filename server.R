@@ -76,7 +76,17 @@ server <- function(input, output, session) {
   )
   
   
-  # Reactive: Selected Subregion on data_maps -----------------------
+  # Reactive: Selected subregion on data_maps -----------------------
+  select_subregion_map <- reactive(
+    x = {
+      select_subregion_map <- data_map %>%
+        subset(Subregion == input$subregion)
+      print(select_subregion_map@data)
+      return(select_subregion_map)
+    }
+  )
+  
+  # Reactive: Selected countries on data_maps -----------------------
   select_country_map <- reactive(
     x = {
       select_country_map <- data_map %>% 
@@ -103,6 +113,24 @@ server <- function(input, output, session) {
       ) #datatable
     }
   ) #renderDataTable
+  
+
+  # Map: Subregion ----------------------------------------------------------
+  output$map_subregion <- renderLeaflet(
+    expr = {
+      leaflet(data = select_subregion_map()) %>%
+        addProviderTiles(provider = "CartoDB.Positron") %>%
+        setView(lng = 76.020001, lat = 39.303001, zoom = 1) %>%
+        # include non-selected asia countries
+        addPolygons(data = data_map, color = "#969696", weight = 1, fillColor = "#808080") %>%
+        addPolygons(color = "#969696",
+                    weight = 2,
+                    fillColor = ~cb_palette(Subregion),
+                    fillOpacity = 0.8,
+                    label = ~as.character(RegionalMember))
+    }
+  ) #renderLeaflet
+  
   
   
   # InfoBox: Subregion Average GDP Growth  ----------------------------------
