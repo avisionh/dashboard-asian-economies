@@ -26,12 +26,21 @@ library(magrittr)
 library(ggplot2)
 library(scales)
 
+# mapping
+library(countrycode)
+library(rworldmap)
+library(spatialEco)
+library(leaflet)
+
 # load external functions
 source("functions.R")
 
 
 # Global Variables --------------------------------------------------------
 message_warning <- "This app is currently under development and further features will be added."
+ # needs to be made dynamic e.g. data_map@data$Subregion %>% unique()
+cb_palette <- colorFactor(palette = c("#1f77b4", "#ff7f0e", "#2ca02c", "#d62728", "#9467bd"), 
+                     domain = c("South Asia", "Central Asia", "Southeast Asia", "East Asia", "The Pacific"))
 
 
 # Data Import -------------------------------------------------------------
@@ -191,6 +200,38 @@ data_plots_region <- data_plots %>%
   summarise(mean_value = mean(value, na.rm = TRUE))
 data_plots_region$mean_value <- round(x = data_plots_region$mean_value, digits = 2)
 
+
+# Mapping -------------------------------------------------------
+# DESC: Only needs to be done once to get data
+
+# 1. Load spatial polygon dataframe for assignment
+data(countriesLow)
+
+# 2. Turns promise created in line above into a formal spatial polygon dataframe
+data_world <- countriesLow
+
+# 3. Merge/Join two dataframes together
+data_map <- sp::merge(x = data_world, y = data_consolidate, by.x = "ISO3", by.y = "CountryCode", sort = FALSE)
+
+# 4. Reduce number of columns for 'data' of S4 object, data_map 
+data_map <- data_map[, c("RegionalMember", "ISO3", "continent",  "Subregion")]
+
+# 5. Remove NA countries and rename 'ISO3' to 'CountryCode'
+data_map@data <- data_map@data %>%
+  rename(CountryCode = ISO3,
+         Continent = continent)
+ 
+data_map <- sp.na.omit(x = data_map, col.name = "RegionalMember")
+
+# 7. Write to folder - want this to work so not always generating polygons
+#rgdal::writeOGR(obj = data_map, dsn = ".", layer = "data/mapping/data_map", driver="ESRI Shapefile")
+
+# data_map <- rgdal::readOGR(dsn = ".", layer = "data/mapping/data_map", verbose = FALSE)
+
+# Clean -------------------------------------------------------------------
+# DESC: Remove unecessary objects
 rm(data_exchangerate, data_externaldebtoutstanding, data_gdp, data_tradebalance,
    data_spread_debtleft, data_spread_exchangerate, data_spread_gdp, data_spread_tradebalance,
-   vec_basicstats_fields, vec_remove_basicstats_fields, vec_subregions)
+   vec_basicstats_fields, vec_remove_basicstats_fields, vec_subregions,
+   countriesLow, data_world)
+

@@ -75,7 +75,28 @@ server <- function(input, output, session) {
     }
   )
   
+ 
+  # Reactive: Selected subregion on data_maps -----------------------
+  select_subregion_map <- reactive(
+    x = {
+      select_subregion_map <- data_map %>%
+        subset(Subregion == input$subregion)
+      print(select_subregion_map@data)
+      return(select_subregion_map)
+    }
+  )
   
+  # Reactive: Selected countries on data_maps -----------------------
+  select_country_map <- reactive(
+    x = {
+      select_country_map <- data_map %>% 
+        subset(RegionalMember == input$name)
+      print(select_country_map@data)
+      return(select_country_map)
+    }
+  )
+  
+
 # --- Subregion Report --- #   
   
   # Text: Subregion countries -----------------------------------------------
@@ -84,13 +105,33 @@ server <- function(input, output, session) {
     expr = {
       datatable(
         data = data_consolidate %>% 
-          filter(Subregion == input$subregion) %>%
-          select(RegionalMember),
+          filter(Subregion == input$subregion) %>% 
+          select(RegionalMember, Subregion, CountryCode) %>% 
+          rename(Country = RegionalMember,
+                 `Country Code` = CountryCode),
         rownames = FALSE,
-        options = list(lengthChange = FALSE, scrollY = "30vh", searching = FALSE, info = FALSE, paging = FALSE, ordering = FALSE)
+        #height = "15vh",
+        options = list(lengthChange = FALSE, scrollY = "20vh", searching = FALSE, info = FALSE, paging = FALSE, ordering = FALSE)
       ) #datatable
     }
   ) #renderDataTable
+  
+
+  # Map: Subregion ----------------------------------------------------------
+  output$map_subregion <- renderLeaflet(
+    expr = {
+      leaflet(data = select_subregion_map()) %>%
+        addProviderTiles(provider = "CartoDB.Positron") %>%
+        setView(lng = 76.020001, lat = 39.303001, zoom = 1) %>%
+        # include non-selected asia countries
+        addPolygons(data = data_map, color = "#969696", weight = 1, fillColor = "#808080") %>%
+        addPolygons(color = "#969696",
+                    weight = 2,
+                    fillColor = ~cb_palette(Subregion),
+                    fillOpacity = 0.8,
+                    label = ~as.character(RegionalMember))
+    }
+  ) #renderLeaflet
   
   
   # InfoBox: Subregion Average GDP Growth  ----------------------------------
@@ -214,6 +255,23 @@ server <- function(input, output, session) {
   )
   
 
+  # Map: Country ------------------------------------------------------------
+  output$map_country <- renderLeaflet(
+    expr = {
+      leaflet(data = select_country_map()) %>% 
+        addProviderTiles(provider = "CartoDB.Positron") %>%
+        setView(lng = 76.020001, lat = 39.303001, zoom = 1) %>%
+        # include non-selected asia countries
+        addPolygons(data = data_map, color = "#969696", weight = 1, fillColor = "#808080") %>% 
+        addPolygons(color = "#969696", 
+                    weight = 2, 
+                    fillColor = ~cb_palette(Subregion), 
+                    fillOpacity = 0.8, 
+                    label = ~as.character(RegionalMember))
+    }
+  ) 
+  
+  
   # InfoBox: Current GDP Change per year ------------------------------------
   # Create output valueBox
   output$valuebox_current_gdp <- renderValueBox(

@@ -120,8 +120,38 @@ ui <- dashboardPage(
       
       ), #tabItem
     
-
-      # Country Report ----------------------------------------------------------
+    # Report: Subregion -------------------------------------------------------
+    
+      tabItem(
+        tabName = "report_subregion",
+        selectInput(
+          inputId = "subregion",
+          label = "Please choose a subregion:",
+          choices = sort(unique(data_plots_region$Subregion))
+        ),
+        
+        fluidRow(
+          # Text: Country in subregion
+          box(
+            title = "Countries in Subregion",  solidHeader = TRUE, status = "danger", width = 4, height = "31vh",
+            dataTableOutput(outputId = "table_subregion_countries")
+          ), #box
+          
+          # Map: Subregion ------------------------------------------------------------
+          box(
+            title = tags$b("Map"), solidHeader = TRUE, status = "danger", width = 8, height = "31vh",
+            leafletOutput(outputId = "map_subregion", height = "25vh")
+          ) #box
+        ), #fluidRow
+        
+        fluidRow(
+          valueBoxOutput(outputId = "valuebox_region_avg_gdp", width = NULL),
+          valueBoxOutput(outputId = "valuebox_region_debt", width = NULL),
+          valueBoxOutput(outputId = "valuebox_region_trade_balance", width = NULL)
+        )
+      ),
+    
+      # Report: Country ----------------------------------------------------------
   
       tabItem(
         tabName = "report_country",
@@ -130,9 +160,6 @@ ui <- dashboardPage(
           label = "Please choose a country",
           choices = sort(data_consolidate$RegionalMember)
         ),
-        
-
-        # Structure: Top Row ------------------------------------------------------
         
         fluidRow(
 
@@ -145,7 +172,8 @@ ui <- dashboardPage(
 
           # Map: Country ------------------------------------------------------------
           box(
-            title = tags$b("Map"), solidHeader = TRUE, status = "danger", width = 5, height = "25vh"
+            title = tags$b("Map"), solidHeader = TRUE, status = "danger", width = 5, height = "25vh",
+            leafletOutput(outputId = "map_country", height = "19vh")
           ) #box
           
         ), #fluidRow
@@ -176,31 +204,7 @@ ui <- dashboardPage(
           
         ) #fluidRow
         
-      ), #tabItem
-      
-      tabItem(
-        tabName = "report_subregion",
-        selectInput(
-          inputId = "subregion",
-          label = "Please choose a subregion:",
-          choices = sort(unique(data_plots_region$Subregion))
-        ),
-        
-        fluidRow(
-          # Text: Country in subregion
-          box(
-            title = "Countries in Subregion",  solidHeader = TRUE, status = "danger", width = 3,
-            dataTableOutput(outputId = "table_subregion_countries")
-          ) #box
-        ), #fluidRow
-        
-        fluidRow(
-          valueBoxOutput(outputId = "valuebox_region_avg_gdp", width = NULL),
-          valueBoxOutput(outputId = "valuebox_region_debt", width = NULL),
-          valueBoxOutput(outputId = "valuebox_region_trade_balance", width = NULL)
-        )
-      )
-    
+      ) #tabItem
     
     ) #tabItems
   
