@@ -17,4 +17,9 @@ The data comes from the following sources:
 - [Trade Balance](https://data.adb.org/dataset/trade-balance-asia-and-pacific-asian-development-outlook)
 - [Exchange Rates](https://data.adb.org/dataset/exchange-rates-us-dollar-asia-and-pacific-asian-development-outlook)
 
+***
+
+## Logging in
+Upon access the app, you will prompted with a pop-up box to enter a password. This is there to demonstrate the password functionality of the app. The password to the app is **incorrect**.
+
 *Under the *Creative Commons Attribution 3.0 IGO* license*
